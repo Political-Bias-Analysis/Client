@@ -1,0 +1,49 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-text{
+    font-weight: bold;
+    font-size: 100px;
+    padding-left: 10px;
+}
+
+.intro-text{
+    padding:0em 4rem 0em 4rem;
+    font-size: 16px;
+}
+
+.intro-text:nth-of-type(1){
+    padding-top: 1rem;
+}
+
+.headers-text-container{
+    flex-direction: column;
+}
+
+.header-logo{
+    padding: 0rem 2rem 0rem 1rem;
+    border-radius: 90px;
+}
+
+.button-style{
+    padding:1rem 2.5rem;
+    margin: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.button-style:hover{
+    transform: scale(1.1);
+    filter: drop-shadow(2px 3px 3px #333);
+    cursor: pointer;
+}
+
+.button-grey{
+    background-color: #212529;
+    color: white;
+}
+
