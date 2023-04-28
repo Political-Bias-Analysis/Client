@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from "react-router-dom";
 
 import './WelcomePage.css'
 import CBSLogo from '../../assets/images/cbs_1.png'
