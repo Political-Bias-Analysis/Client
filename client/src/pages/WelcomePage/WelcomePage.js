@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
-import './Header.css'
+import './WelcomePage.css'
 import CBSLogo from '../../assets/images/cbs_1.png'
 
-const Header = () => {
+const WelcomePage = () => {
+
   return (
     <div className='container'>
       <h1 className='header-text'>
@@ -18,8 +20,12 @@ const Header = () => {
           It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
         </p>
         <div className='button-container'>
-          <button className='button-style button-grey'>Discover Dashboard</button>
-          <button className='button-style'>Final Report</button>
+          <a className='button-style button-grey' href='dashboard'>
+            Discover Dashboard
+          </a>
+          <a className='button-style' href="report">
+            Final Report
+          </a>
         </div>
       </div>
 
@@ -27,4 +33,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default WelcomePage

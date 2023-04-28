@@ -1,14 +1,18 @@
 import './App.css';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
-
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import Dashboard from './pages/Dashboard/Dashboard';
+import FinalReport from './pages/FinalReport/FinalReport';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <Routes className="App">
+      <Route path='/' element={<WelcomePage/>} />
+      <Route path='/dashboard' element={<Dashboard/>} />
+      <Route path='/report' element={<FinalReport/>} />
+    </Routes>
   );
 }
 
