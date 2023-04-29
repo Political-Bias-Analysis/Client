@@ -7,7 +7,7 @@ exports.getAllVotesByYear = (req, res) => {
   let year = req.query.year;
 
   Results.findAll({
-    attributes: ['year', 'office', 'state', 'party', 'vote %', 'vote count'],
+    attributes: ['year', 'office', 'state', 'party', 'vote_percentage', 'vote_count'],
     where: {
         year: year
     }
