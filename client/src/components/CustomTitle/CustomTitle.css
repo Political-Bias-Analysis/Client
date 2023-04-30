@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #212529;
+    color: white;
+    padding: 1rem
+}
+
+.header-text {
+    font-size: 80px;
+}
+
+.title-text {
+    font-weight: bold;
+}

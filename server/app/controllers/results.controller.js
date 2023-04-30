@@ -3,13 +3,14 @@ const db = require("../models");
 
 const Results = db.results;
 
-exports.getAllVotesByYear = (req, res) => {
+exports.getVotesByOfficeAndYear = (req, res) => {
   let year = req.query.year;
-
+  let office = req.query.office
   Results.findAll({
     attributes: ['year', 'office', 'state', 'party', 'vote_percentage', 'vote_count'],
     where: {
-        year: year
+        year: year,
+        office: office
     }
   }).then (data => {
     res.send(data);
