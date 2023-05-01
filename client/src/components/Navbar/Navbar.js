@@ -5,15 +5,15 @@ const Navbar = () => {
   return (
     <div className='nav-container'>
       <h1 className='header'>Explore Data</h1>
-      <ul className='nav-left-items'>
+      <ul className='nav-right-items'>
         <li>
-          <a href="dashboard">Dashboard</a>
+          <a href="dashboard" className='a-link'>Dashboard</a>
         </li>
         <li>
-          <a href="models">Models</a>
+          <a className='a-link' href="models">Models</a>
         </li>
         <li>
-          <a href="report">Reports</a>
+          <a className='a-link' href="report">Reports</a>
         </li>
       </ul>
     </div>

@@ -4,7 +4,7 @@ import './CustomTitle.css'
 
 const CustomTitle = ({title}) => {
   return (
-    <div  className='container'>
+    <div className='title-container'>
         <h1 className='header-text'>
             How Much Does Bias in Media Influence Election Outcomes?
         </h1>

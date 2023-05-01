@@ -1,14 +1,15 @@
-.container{
+.welcome-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.header-text{
+.welcome-header-text{
     font-weight: bold;
     font-size: 100px;
     padding-left: 10px;
     text-align: center;
+    margin: 0;
 }
 
 .intro-text{
@@ -50,8 +51,15 @@
     cursor: pointer;
 }
 
-.button-grey{
-    background-color: #212529;
-    color: white;
+.button-style:visited {
+    color: #212529
 }
 
+.button-grey {
+    background-color: #212529;
+    color:#FFFFFF;
+}
+
+.button-grey:visited {
+    color:#FFFFFF;
+}
