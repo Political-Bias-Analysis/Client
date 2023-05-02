@@ -1,7 +1,7 @@
 import Axios from "./axios";
 
 class RequestResultsData {
-    getVotesByOfficeAndYear() {
+    getVotesByOfficeAndYear(year, office) {
         return Axios.get("/getVotesByOfficeAndYear");
     }
 }

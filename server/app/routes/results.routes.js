@@ -3,7 +3,7 @@ module.exports = app => {
     var router = require("express").Router();
 
     // GET ITEMS
-    router.get("/getVotesByOfficeAndYear", results.getVotesByOfficeAndYear);
+    router.get("/:year/:office", results.getVotesByOfficeAndYear);
 
     app.use("/api", router);
 }

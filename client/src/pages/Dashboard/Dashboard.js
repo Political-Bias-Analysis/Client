@@ -5,6 +5,7 @@ import './Dashboard.css'
 import Navbar from '../../components/Navbar/Navbar'
 import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
+import USChoropleth from '../../components/USChoropleth/USChoropleth'
 
 const Dashboard = () => {
 
@@ -35,7 +36,7 @@ const Dashboard = () => {
           setDisplayValue={setShowDisplayYear}
           getDisplayValue={getDisplayValue}/>
         <div >
-          Graphs
+          <USChoropleth/>
         </div>
       </div>
     </div>

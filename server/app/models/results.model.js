@@ -1,5 +1,3 @@
-const { sequelize, Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
     const Results = sequelize.define("results", {
         year: {
@@ -24,5 +22,5 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER
         }
     });
-    return Results
+    return Results;
 }
