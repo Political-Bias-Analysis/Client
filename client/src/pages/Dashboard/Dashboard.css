@@ -10,3 +10,7 @@
     grid-row-gap: 0px;
 }
 
+.button-container {
+    display: flex;
+    
+}

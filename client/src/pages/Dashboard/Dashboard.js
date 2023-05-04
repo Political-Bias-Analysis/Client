@@ -101,22 +101,24 @@ const Dashboard = () => {
       <Navbar />
       <CustomTitle title="Dashboard" />
       <div className='page-container'>
-        <DropDown 
-          items={electionTerms}
-          getShowDropDown={getOfficeDropDown}
-          setDropDown={setOfficeDropDown}
-          setDisplayValue={setOfficeValue}
-          getDisplayValue={getOfficeTerm}/>
-        <DropDown 
-          items={
-            office === 'President' ? elections.pres.years : 
-            office === 'Senate' ? elections.senate.years :
-            elections.house.years
-          }
-          getShowDropDown={getYearDropDownValue}
-          setDropDown={setYearShowDropDown}
-          setDisplayValue={setShowDisplayYear}
-          getDisplayValue={getYearDisplayValue}/>
+        <div className='button-container'>
+          <DropDown 
+            items={electionTerms}
+            getShowDropDown={getOfficeDropDown}
+            setDropDown={setOfficeDropDown}
+            setDisplayValue={setOfficeValue}
+            getDisplayValue={getOfficeTerm}/>
+          <DropDown 
+            items={
+              office === 'President' ? elections.pres.years : 
+              office === 'Senate' ? elections.senate.years :
+              elections.house.years
+            }
+            getShowDropDown={getYearDropDownValue}
+            setDropDown={setYearShowDropDown}
+            setDisplayValue={setShowDisplayYear}
+            getDisplayValue={getYearDisplayValue}/>
+        </div>
         <div >
         <USChoropleth/>
         </div>
