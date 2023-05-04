@@ -119,8 +119,8 @@ const Dashboard = () => {
             setDisplayValue={setShowDisplayYear}
             getDisplayValue={getYearDisplayValue}/>
         </div>
-        <div >
-        <USChoropleth/>
+        <div className='map-holder'>
+          <USChoropleth/>
         </div>
       </div>
     </div>
