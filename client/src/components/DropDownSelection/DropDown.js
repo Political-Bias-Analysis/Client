@@ -9,7 +9,7 @@ const DropDown = ({
   getDisplayValue }
   ) => {
   return (
-    <div>
+    <div className='container'>
       <button
         onClick={() => setDropDown(!getShowDropDown())}
         className="select-button"

@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import WelcomePage from './pages/WelcomePage/WelcomePage';
@@ -8,6 +8,7 @@ import Models from './pages/Models/Models';
 import FinalReport from './pages/FinalReport/FinalReport';
 
 function App() {
+
   return (
     <Routes className="App">
       <Route path='/' element={<WelcomePage/>} />

@@ -22,6 +22,8 @@
     margin: 1rem 2rem 2rem 2rem;
     border-radius: 1rem;
     padding: 1rem;
+    z-index: 9999;
+    background-color: #ffffff;
 }
 
 .inner-options-container {
@@ -29,7 +31,6 @@
     width: 200px;
     overflow: auto;
     -webkit-overflow-scrolling: 'touch';
-    z-index: 1;
 }
 
 .year-options {
