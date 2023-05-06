@@ -4,6 +4,6 @@ module.exports = app => {
 
     // GET ITEMS
     router.get("/:year/:office", results.getVotesByOfficeAndYear);
-
+    router.get("/:year/:office/max", results.getMaxVotesByOfficeAndYear);
     app.use("/api", router);
 }

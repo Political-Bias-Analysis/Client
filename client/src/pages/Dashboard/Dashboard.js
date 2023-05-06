@@ -39,7 +39,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchPresData = async() => {
       try {
-        Axios.get(`/${displayYear}/${elections.pres.queryTerm}`)
+        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/max`)
         .then((response) => setgraphDataPres(response.data));
         setgraphDataSenate([]);
         setgraphDataHouse([]);
@@ -50,7 +50,7 @@ const Dashboard = () => {
 
     const fetchSenateData = async() => {
       try {
-        Axios.get(`/${displayYear}/${elections.senate.queryTerm}`)
+        Axios.get(`/${displayYear}/${elections.senate.queryTerm}/max`)
         .then((response) => setgraphDataSenate(response.data));
         setgraphDataHouse([]);
         setgraphDataPres([]);
@@ -61,7 +61,7 @@ const Dashboard = () => {
 
     const fetchHouseData = async() => {
       try {
-        Axios.get(`/${displayYear}/${elections.house.queryTerm}`)
+        Axios.get(`/${displayYear}/${elections.house.queryTerm}/max`)
           .then((response) => setgraphDataHouse(response.data));
           setgraphDataSenate([]);
           setgraphDataPres([]);
@@ -120,7 +120,7 @@ const Dashboard = () => {
             getDisplayValue={getYearDisplayValue}/>
         </div>
         <div className='map-holder'>
-          <USChoropleth/>
+          <USChoropleth data={graphDataPres}/>
         </div>
       </div>
     </div>
