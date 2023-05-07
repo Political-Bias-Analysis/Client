@@ -6,7 +6,9 @@ import Navbar from '../../components/Navbar/Navbar'
 import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
+import VerticalBar from '../../components/VerticalBar/VerticalBar'
 import Axios from '../../controllers/axios'
+
 
 const Dashboard = () => {
 
@@ -19,6 +21,8 @@ const Dashboard = () => {
   const [graphDataPres, setgraphDataPres] = useState([])
   const [graphDataSenate, setgraphDataSenate] = useState([])
   const [graphDataHouse, setgraphDataHouse] = useState([])
+  
+  const [presidentTotalVote, setPresidentTotalVote] = useState([])
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -48,6 +52,17 @@ const Dashboard = () => {
       } 
     }
 
+    const fetchPresDataTotal = async() => {
+      try {
+        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/total-state-year`)
+        .then((response) => setPresidentTotalVote(response.data));
+        // setgraphDataSenate([]);
+        // setgraphDataHouse([]);
+      } catch (error) {
+        console.log("Failed to retrive Data: Presitental Elections:", error);
+      } 
+    }
+
     const fetchSenateData = async() => {
       try {
         Axios.get(`/${displayYear}/${elections.senate.queryTerm}/max`)
@@ -66,34 +81,34 @@ const Dashboard = () => {
           setgraphDataSenate([]);
           setgraphDataPres([]);
       } catch (error) {
-        console.log("Failed to retrive Data: House Elections")
+        console.log("Failed to retrive Data: House Elections");
       } 
     }
-    if (office === 'President') 
-      fetchPresData()
+    if (office === 'President') {
+      fetchPresData();
+      fetchPresDataTotal();
+    }
     else if (office === 'Senate')
-      fetchSenateData()
+      fetchSenateData();
     else
-      fetchHouseData()
+      fetchHouseData();
   }, [displayYear, office])
 
 
-  console.log(graphDataSenate[0])
-
   const getYearDisplayValue = () => {
-    return displayYear
+    return displayYear;
   }
 
   const getYearDropDownValue = () => {
-    return showYearDropDown
+    return showYearDropDown;
   }
 
   const getOfficeTerm = () => {
-    return office
+    return office;
   }
 
   const getOfficeDropDown = () => {
-    return showOfficeDropDown
+    return showOfficeDropDown;
   }
 
   return (
@@ -120,7 +135,14 @@ const Dashboard = () => {
             getDisplayValue={getYearDisplayValue}/>
         </div>
         <div className='map-holder'>
-          <USChoropleth data={graphDataPres}/>
+          <USChoropleth data={
+            office === 'President' ? graphDataPres :
+            office === 'Senate' ? graphDataSenate :
+            graphDataHouse
+            }/>
+        </div>
+        <div>
+          <VerticalBar data={presidentTotalVote} />
         </div>
       </div>
     </div>

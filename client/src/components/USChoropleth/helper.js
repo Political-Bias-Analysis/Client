@@ -13,11 +13,11 @@ export const pairData = (electionData) => {
       const curParty = electionData[i].party
       const constVote =  electionData[i].max_percentage
       if (curParty === 'DEM')
-        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "DEM": constVote * 100}
+        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "DEM": constVote }
       else if (curParty === 'REP')
-        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "REP": constVote * 100}
+        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "REP": constVote }
       else 
-        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "IND": constVote * 100}
+        statesData.features[indexGeo].properties = {...statesData.features[indexGeo].properties, "IND": constVote }
     } else (
       console.log("WRONG DATA", prev, statesData.features[indexGeo].properties.abbr)
     )

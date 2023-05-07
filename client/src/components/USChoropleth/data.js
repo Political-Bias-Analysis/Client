@@ -4,7 +4,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "02",
-        properties: { name: "Alaska", abbr: "AK", density: 1.264 },
+        properties: { name: "Alaska", abbr: "AK"},
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -1244,7 +1244,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "01",
-        properties: { name: "Alabama", abbr: "AL", density: 94.65 },
+        properties: { name: "Alabama", abbr: "AL"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1289,7 +1289,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "05",
-        properties: { name: "Arkansas", abbr: "AR", density: 56.43 },
+        properties: { name: "Arkansas", abbr: "AR" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1338,7 +1338,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "04",
-        properties: { name: "Arizona", abbr: "AZ", density: 57.05 },
+        properties: { name: "Arizona", abbr: "AZ" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1382,7 +1382,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "06",
-        properties: { name: "California", abbr: "CA", density: 241.7 },
+        properties: { name: "California", abbr: "CA" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1487,7 +1487,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "08",
-        properties: { name: "Colorado", abbr: "CO", density: 49.33 },
+        properties: { name: "Colorado", abbr: "CO" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1515,7 +1515,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "09",
-        properties: { name: "Connecticut", abbr: "CT", density: 739.1 },
+        properties: { name: "Connecticut", abbr: "CT"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1543,7 +1543,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "11",
-        properties: { name: "District of Columbia", abbr: "DC", density: 10065 },
+        properties: { name: "District of Columbia", abbr: "DC" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1560,7 +1560,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "10",
-        properties: { name: "Delaware", abbr: "DE", density: 464.3 },
+        properties: { name: "Delaware", abbr: "DE"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1585,7 +1585,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "12",
-        properties: { name: "Florida", abbr: "FL", density: 353.4 },
+        properties: { name: "Florida", abbr: "FL"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1675,7 +1675,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "13",
-        properties: { name: "Georgia", abbr: "GA", density: 169.5 },
+        properties: { name: "Georgia", abbr: "GA"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1738,7 +1738,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "15",
-        properties: { name: "Hawaii", abbr: "HI", density: 214.1 },
+        properties: { name: "Hawaii", abbr: "HI" },
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -1817,7 +1817,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "19",
-        properties: { name: "Iowa", abbr: "IA", density: 54.81 },
+        properties: { name: "Iowa", abbr: "IA" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1879,7 +1879,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "16",
-        properties: { name: "Idaho", abbr: "ID", density: 19.15 },
+        properties: { name: "Idaho", abbr: "ID" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -1957,7 +1957,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "17",
-        properties: { name: "Illinois", abbr: "IL", density: 231.5 },
+        properties: { name: "Illinois", abbr: "IL"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2036,7 +2036,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "18",
-        properties: { name: "Indiana", abbr: "IN", density: 181.7 },
+        properties: { name: "Indiana", abbr: "IN" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2094,7 +2094,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "20",
-        properties: { name: "Kansas", abbr: "KS", density: 35.09 },
+        properties: { name: "Kansas", abbr: "KS" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2119,7 +2119,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "21",
-        properties: { name: "Kentucky", abbr: "KY", density: 110 },
+        properties: { name: "Kentucky", abbr: "KY" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2206,7 +2206,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "22",
-        properties: { name: "Louisiana", abbr: "LA", density: 105 },
+        properties: { name: "Louisiana", abbr: "LA" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2294,7 +2294,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "25",
-        properties: { name: "Massachusetts", abbr: "MA", density: 840.2 },
+        properties: { name: "Massachusetts", abbr: "MA" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2341,7 +2341,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "24",
-        properties: { name: "Maryland", abbr: "MD", density: 596.3 },
+        properties: { name: "Maryland", abbr: "MD"},
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -2423,7 +2423,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "23",
-        properties: { name: "Maine", abbr: "ME", density: 43.04 },
+        properties: { name: "Maine", abbr: "ME" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2501,7 +2501,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "26",
-        properties: { name: "Michigan", abbr: "MI", density: 173.9 },
+        properties: { name: "Michigan", abbr: "MI" },
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -2679,7 +2679,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "27",
-        properties: { name: "Minnesota", abbr: "MN", density: 67.14 },
+        properties: { name: "Minnesota", abbr: "MN"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2774,7 +2774,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "29",
-        properties: { name: "Missouri", abbr: "MO", density: 87.26 },
+        properties: { name: "Missouri", abbr: "MO"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2839,7 +2839,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "28",
-        properties: { name: "Mississippi", abbr: "MS", density: 63.5 },
+        properties: { name: "Mississippi", abbr: "MS" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2897,7 +2897,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "30",
-        properties: { name: "Montana", abbr: "MT", density: 6.858 },
+        properties: { name: "Montana", abbr: "MT" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -2961,7 +2961,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "37",
-        properties: { name: "North Carolina", abbr: "NC", density: 198.2 },
+        properties: { name: "North Carolina", abbr: "NC" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3034,7 +3034,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "38",
-        properties: { name: "North Dakota", abbr: "ND",  density: 9.916 },
+        properties: { name: "North Dakota", abbr: "ND"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3062,7 +3062,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "31",
-        properties: { name: "Nebraska", abbr: "NE", density: 23.97 },
+        properties: { name: "Nebraska", abbr: "NE"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3103,7 +3103,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "33",
-        properties: { name: "New Hampshire", abbr: "NH", density: 147 },
+        properties: { name: "New Hampshire", abbr: "NH"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3143,7 +3143,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "34",
-        properties: { name: "New Jersey", abbr: "NJ", density: 1189 },
+        properties: { name: "New Jersey", abbr: "NJ"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3187,7 +3187,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "35",
-        properties: { name: "New Mexico", abbr: "NM", density: 17.16 },
+        properties: { name: "New Mexico", abbr: "NM" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3216,7 +3216,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "32",
-        properties: { name: "Nevada", abbr: "NV", density: 24.8 },
+        properties: { name: "Nevada", abbr: "NV"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3249,7 +3249,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "36",
-        properties: { name: "New York", abbr: "NY", density: 412.3 },
+        properties: { name: "New York", abbr: "NY"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3329,7 +3329,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "39",
-        properties: { name: "Ohio", abbr: "OH", density: 281.9 },
+        properties: { name: "Ohio", abbr: "OH"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3388,7 +3388,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "40",
-        properties: { name: "Oklahoma", abbr: "OK", density: 55.22 },
+        properties: { name: "Oklahoma", abbr: "OK"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3445,7 +3445,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "41",
-        properties: { name: "Oregon", abbr: "OR", density: 40.33 },
+        properties: { name: "Oregon", abbr: "OR"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3513,7 +3513,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "42",
-        properties: { name: "Pennsylvania", abbr: "PA", density: 284.3 },
+        properties: { name: "Pennsylvania", abbr: "PA"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3558,7 +3558,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "44",
-        properties: { name: "Rhode Island", abbr: "RI", density: 1006 },
+        properties: { name: "Rhode Island", abbr: "RI"},
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -3591,7 +3591,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "45",
-        properties: { name: "South Carolina", abbr: "SC", density: 155.4 },
+        properties: { name: "South Carolina", abbr: "SC"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3647,7 +3647,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "46",
-        properties: { name: "South Dakota", abbr: "SD", density: 98.07 },
+        properties: { name: "South Dakota", abbr: "SD"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3688,7 +3688,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "47",
-        properties: { name: "Tennessee", abbr: "TN", density: 88.08 },
+        properties: { name: "Tennessee", abbr: "TN"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3743,7 +3743,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "48",
-        properties: { name: "Texas", abbr: "TX", density: 98.07 },
+        properties: { name: "Texas", abbr: "TX" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3907,7 +3907,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "49",
-        properties: { name: "Utah", abbr: "UT", density: 34.3 },
+        properties: { name: "Utah", abbr: "UT" },
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -3931,7 +3931,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "51",
-        properties: { name: "Virginia", abbr: "VA", density: 204.5 },
+        properties: { name: "Virginia", abbr: "VA"},
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -4033,7 +4033,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "50",
-        properties: { name: "Vermont", abbr: "VT", density: 67.73 },
+        properties: { name: "Vermont", abbr: "VT"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -4073,7 +4073,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "53",
-        properties: { name: "Washington", abbr: "WA", density: 102.6 },
+        properties: { name: "Washington", abbr: "WA"},
         geometry: {
           type: "MultiPolygon",
           coordinates: [
@@ -4167,7 +4167,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "55",
-        properties: { name: "Wisconsin", abbr: "WI", density: 105.2 },
+        properties: { name: "Wisconsin", abbr: "WI"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -4254,7 +4254,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "54",
-        properties: { name: "West Virginia", abbr: "WV", density: 77.06 },
+        properties: { name: "West Virginia", abbr: "WV"},
         geometry: {
           type: "Polygon",
           coordinates: [
@@ -4331,7 +4331,7 @@ export const statesData = {
       {
         type: "Feature",
         id: "56",
-        properties: { name: "Wyoming", abbr: "WY",  density: 5.851 },
+        properties: { name: "Wyoming", abbr: "WY"},
         geometry: {
           type: "Polygon",
           coordinates: [

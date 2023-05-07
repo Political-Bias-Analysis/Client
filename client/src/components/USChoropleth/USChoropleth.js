@@ -11,7 +11,6 @@ import { statesData } from './data';
 import './USChoropleth.css'
 import {pairData} from './helper'
 
-
 const USChoropleth = ({data}) => {
 
   const [statesDataNew, setStateData] = useState(statesData)
@@ -19,38 +18,40 @@ const USChoropleth = ({data}) => {
   const center = [38.5, -96];
 
   useEffect(() => {
-    const prepDate = () => {
-      setStateData(pairData(data))
+    const prepDate = async () => {
+      const newData = await pairData(data)
+      setStateData(newData)
     }
     prepDate()
-  });
+  }, []);
+
 
   const mapPolygonColorToDensity = (feature) => {
     const vote = Math.max(feature.DEM, feature.REP, feature.IND)
     const party = Object.keys(feature).filter(key => feature[key]===vote)
 
-    // console.log(party, vote)
+    // console.log(feature)
 
-    if (party === 'DEM') {
-      return vote > 60 ? '#0088A3' 
-        : vote > 50 ? '#00BBE0'
-        : vote > 40 ? '#00AACC'
-        : vote > 30 ? '#0AD6FF'
-        : vote > 20 ? '#5CE4FF'
+    if (party[0] === 'DEM') {
+      return vote > 0.60 ? '#0088A3' 
+        : vote > 0.50 ? '#00BBE0'
+        : vote > 0.40 ? '#00AACC'
+        : vote > 0.30 ? '#0AD6FF'
+        : vote > 0.20 ? '#5CE4FF'
         : '#99EEFF'
-    } else if (party === 'REP') {
-      return vote > 60 ? '#9B2226' 
-        : vote > 50 ? '#C92C31'
-        : vote > 40 ? '#D7474C'
-        : vote > 30 ? '#DE686C'
-        : vote > 20 ? '#E58A8D'
+    } else if (party[0] === 'REP') {
+      return vote > 0.60 ? '#9B2226' 
+        : vote > 0.50 ? '#C92C31'
+        : vote > 0.40 ? '#D7474C'
+        : vote > 0.30 ? '#DE686C'
+        : vote > 0.20 ? '#E58A8D'
         : '#ECACAE'
     } else {
-      return vote > 60 ? '#7081FF' 
-        : vote > 50 ? '#99A5FF'
-        : vote > 40 ? '#ADB7FF'
-        : vote > 30 ? '#C2C9FF'
-        : vote > 20 ? '#D6DBFF'
+      return vote > 0.60 ? '#7081FF' 
+        : vote > 0.50 ? '#99A5FF'
+        : vote > 0.40 ? '#ADB7FF'
+        : vote > 0.30 ? '#C2C9FF'
+        : vote > 0.20 ? '#D6DBFF'
         : '#EBEDFF'
     }
   }
@@ -63,43 +64,31 @@ const USChoropleth = ({data}) => {
         opacity: 1,
         color: 'white',
         dashArray: '2',
-        fillOpacity: 0.5
+        fillOpacity: 1
     });
-};
+  };
   
   const mouseOverHighlight = (e) => {
     const current = e.target
-    console.log(current)
     setShowInfo(e.target.feature.properties)
     current.setStyle({
       weight: 1,
       color: '#000000',
-      fillOpacity: 1
+      fillOpacity: 0.7
     })
-  }
-
-  const resetHightlight = (e) => {
-    setShowInfo({});
-    e.target.setStyle(style(e.target.feature));
+    current.bringToFront()
   }
 
   const onEachFeature= (feature, layer)=> {
     layer.on({
-        mouseover: mouseOverHighlight,
-        mouseout: resetHightlight,
+        click: mouseOverHighlight,
     });
-}
-
-  const mapStyle = {
-    height: '50vw',
-    width: '100vh',
   }
-
-  const feature = statesDataNew.features.map(feature=>{
-    return(feature);
-  });
-
-  console.log(showInfo)
+  
+  const mapStyle = {
+    height: '30vw',
+    width: '80vh',
+  }
 
   return (
     <div className='map-container'>
@@ -107,19 +96,17 @@ const USChoropleth = ({data}) => {
       <div>
         <div>
           {!showInfo.name && 
-            <div>
+            <div className="census-info-hover">
               <strong>Election Vote Percentage by State</strong>    
-              <p>Hover on each state for more details</p>
+              <p>Click on each state for more details</p>
             </div>
           }
           {showInfo.name && (
-            <ul>
+            <ul className="census-info">
               <li><strong>{showInfo.name}</strong></li><br/>
-              <li>Democratic Party:{showInfo.max_percentage}</li>
-              <li>Republican Party:{showInfo.max_percentage}</li>
-              {showInfo.IND && 
-                <li>Independent Party:{showInfo.max_percentage}</li>
-              }
+              {showInfo.DEM && <li>Democratic Party: {showInfo.DEM}</li>}
+              {showInfo.REP && <li>Republican Party: {showInfo.REP}</li>}
+              {showInfo.IND && <li>Independent Party:{showInfo.IND}</li>}
             </ul>
           )}
           <MapContainer
@@ -127,14 +114,14 @@ const USChoropleth = ({data}) => {
             zoom={3.5}
             style={mapStyle}
           >
-            <TileLayer
-              url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=cstWqyoG2iwEGEEQ37jK"
-              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-            />
-            {feature && <GeoJSON 
-              data={feature} 
-              style={style}
-              onEachFeature={onEachFeature}/>}
+          <TileLayer
+            url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          />
+          <GeoJSON 
+            data={pairData(data).features} 
+            style={style}
+            onEachFeature={onEachFeature}/>
           </MapContainer>
         </div>
       </div>
