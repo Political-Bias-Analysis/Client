@@ -1,6 +1,9 @@
-const { sequelize } = require("../models");
-const db = require("../models");
 require('pg').defaults.parseInt8 = true
+
+const { sequelize } = require("../models");
+const {pairData} = require("./helper/prepareData")
+const db = require("../models");
+
 const Results = db.results;
 
 exports.getVotesByOfficeAndYear = (req, res) => {
@@ -24,7 +27,8 @@ exports.getMaxVotesByOfficeAndYear = (req, res) => {
     attributes: [
       'state', 
       'party', 
-      [sequelize.fn("MAX", sequelize.col('vote_count')), 'max_count']],
+      [sequelize.fn("MAX", sequelize.col("vote_percentage")), 'max_percentage']],
+      // [sequelize.fn("MAX", sequelize.col('vote_count')), 'max_count']],
     where: {
         year: req.params.year,
         office: req.params.office
@@ -69,8 +73,30 @@ exports.getTotalVoteByOfficeStateYear = (req, res) => {
       console.log(`${key}: ${value.DEM}`);
       final.push({year: key, DEM: value.DEM, REP:value.REP, IND:value.IND})
     }
-    console.log(final)
     res.send(final);
+  }).catch (error => {
+    res.status(500).send({
+        message: error
+    });
+  });
+};
+
+exports.getGeoByOfficeAndYear = (req, res) => {
+  Results.findAll({
+    attributes: [
+      'state', 
+      'party', 
+      [sequelize.fn("MAX", sequelize.col("vote_percentage")), 'max_percentage']],
+      // [sequelize.fn("MAX", sequelize.col('vote_count')), 'max_count']],
+    where: {
+        year: req.params.year,
+        office: req.params.office
+    },
+    group: ["state", "party"],
+    order: ["state", "party"]
+  }).then (data => {
+    const newData = pairData(data)
+    res.send(newData);
   }).catch (error => {
     res.status(500).send({
         message: error

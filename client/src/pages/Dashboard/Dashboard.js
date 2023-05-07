@@ -18,9 +18,9 @@ const Dashboard = () => {
   const [showOfficeDropDown, setOfficeDropDown] = useState(false)
   const [office, setOfficeValue] = useState("President")
 
-  const [graphDataPres, setgraphDataPres] = useState([])
-  const [graphDataSenate, setgraphDataSenate] = useState([])
-  const [graphDataHouse, setgraphDataHouse] = useState([])
+  const [graphGeoDataPres, setgraphGeoDataPres] = useState([])
+  const [graphGeoDataSenate, setgraphGeoDataSenate] = useState([])
+  const [graphGeoDataHouse, setgraphGeoDataHouse] = useState([])
   
   const [presidentTotalVote, setPresidentTotalVote] = useState([])
 
@@ -43,14 +43,36 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchPresData = async() => {
       try {
-        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/max`)
-        .then((response) => setgraphDataPres(response.data));
-        setgraphDataSenate([]);
-        setgraphDataHouse([]);
+        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/geo`)
+        .then((response) => setgraphGeoDataPres(response.data));
+        setgraphGeoDataSenate([]);
+        setgraphGeoDataHouse([]);
       } catch (error) {
-        console.log("Failed to retrive Data: Presitental Elections:", error)
+        console.log("Failed to retrive Data: Presitental Elections:", error);
       } 
-    }
+    };
+
+    const fetchSenateData = async() => {
+      try {
+        Axios.get(`/${displayYear}/${elections.senate.queryTerm}/geo`)
+        .then((response) => setgraphGeoDataSenate(response.data));
+        setgraphGeoDataHouse([]);
+        setgraphGeoDataPres([]);
+      } catch (error) {
+        console.log("Failed to retrive Data: Senate Elections");
+      } 
+    };
+
+    const fetchHouseData = async() => {
+      try {
+        Axios.get(`/${displayYear}/${elections.house.queryTerm}/geo`)
+          .then((response) => setgraphGeoDataHouse(response.data));
+          setgraphGeoDataSenate([]);
+          setgraphGeoDataPres([]);
+      } catch (error) {
+        console.log("Failed to retrive Data: House Elections");
+      } 
+    };
 
     const fetchPresDataTotal = async() => {
       try {
@@ -61,29 +83,8 @@ const Dashboard = () => {
       } catch (error) {
         console.log("Failed to retrive Data: Presitental Elections:", error);
       } 
-    }
+    };
 
-    const fetchSenateData = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.senate.queryTerm}/max`)
-        .then((response) => setgraphDataSenate(response.data));
-        setgraphDataHouse([]);
-        setgraphDataPres([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: Senate Elections")
-      } 
-    }
-
-    const fetchHouseData = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.house.queryTerm}/max`)
-          .then((response) => setgraphDataHouse(response.data));
-          setgraphDataSenate([]);
-          setgraphDataPres([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: House Elections");
-      } 
-    }
     if (office === 'President') {
       fetchPresData();
       fetchPresDataTotal();
@@ -135,11 +136,13 @@ const Dashboard = () => {
             getDisplayValue={getYearDisplayValue}/>
         </div>
         <div className='map-holder'>
-          <USChoropleth data={
-            office === 'President' ? graphDataPres :
-            office === 'Senate' ? graphDataSenate :
-            graphDataHouse
-            }/>
+          {(graphGeoDataHouse || graphGeoDataPres || graphGeoDataSenate) &&
+            <USChoropleth data={
+              office === 'President' ? graphGeoDataPres :
+              office === 'Senate' ? graphGeoDataSenate :
+              graphGeoDataHouse
+              }/>
+          }
         </div>
         <div>
           <VerticalBar data={presidentTotalVote} />

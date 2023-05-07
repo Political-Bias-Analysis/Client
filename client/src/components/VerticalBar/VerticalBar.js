@@ -14,7 +14,7 @@ const VerticalBar = ({data}) => {
 
   return (
     <div style={{margin: '3rem'}}>
-      <BarChart width={750} height={500} data={data}>
+      <BarChart width={600} height={500} data={data}>
         <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="year"/>
         <YAxis/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -7,30 +7,16 @@ import {
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { statesData } from './data';
 import './USChoropleth.css'
-import {pairData} from './helper'
 
 const USChoropleth = ({data}) => {
 
-  const [statesDataNew, setStateData] = useState(statesData)
   const [showInfo, setShowInfo] = useState({})
   const center = [38.5, -96];
 
-  useEffect(() => {
-    const prepDate = async () => {
-      const newData = await pairData(data)
-      setStateData(newData)
-    }
-    prepDate()
-  }, []);
-
-
   const mapPolygonColorToDensity = (feature) => {
-    const vote = Math.max(feature.DEM, feature.REP, feature.IND)
+    const vote = Math.max(feature.DEM||0, feature.REP||0, feature.IND||0)
     const party = Object.keys(feature).filter(key => feature[key]===vote)
-
-    // console.log(feature)
 
     if (party[0] === 'DEM') {
       return vote > 0.60 ? '#0088A3' 
@@ -88,7 +74,7 @@ const USChoropleth = ({data}) => {
   const mapStyle = {
     height: '30vw',
     width: '80vh',
-  }
+  };
 
   return (
     <div className='map-container'>
@@ -106,7 +92,7 @@ const USChoropleth = ({data}) => {
               <li><strong>{showInfo.name}</strong></li><br/>
               {showInfo.DEM && <li>Democratic Party: {showInfo.DEM}</li>}
               {showInfo.REP && <li>Republican Party: {showInfo.REP}</li>}
-              {showInfo.IND && <li>Independent Party:{showInfo.IND}</li>}
+              {showInfo.IND && <li>Independent Party: {showInfo.IND}</li>}
             </ul>
           )}
           <MapContainer
@@ -118,10 +104,10 @@ const USChoropleth = ({data}) => {
             url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           />
-          <GeoJSON 
-            data={pairData(data).features} 
+          {data.features && <GeoJSON 
+            data={data.features} 
             style={style}
-            onEachFeature={onEachFeature}/>
+            onEachFeature={onEachFeature}/>}
           </MapContainer>
         </div>
       </div>
