@@ -7,7 +7,8 @@ import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import VerticalBar from '../../components/VerticalBar/VerticalBar'
-import Axios from '../../controllers/axios'
+
+import {fetchGeoData, fetchDataTotal} from './HelperAPI'
 
 
 const Dashboard = () => {
@@ -18,11 +19,11 @@ const Dashboard = () => {
   const [showOfficeDropDown, setOfficeDropDown] = useState(false)
   const [office, setOfficeValue] = useState("President")
 
-  const [graphGeoDataPres, setgraphGeoDataPres] = useState([])
-  const [graphGeoDataSenate, setgraphGeoDataSenate] = useState([])
-  const [graphGeoDataHouse, setgraphGeoDataHouse] = useState([])
+  const [graphGeoData, setgraphGeoData] = useState([])
+  // const [graphGeoDataSenate, setgraphGeoDataSenate] = useState([])
+  // const [graphGeoDataHouse, setgraphGeoDataHouse] = useState([])
   
-  const [presidentTotalVote, setPresidentTotalVote] = useState([])
+  const [totalVote, setTotalVote] = useState([])
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -41,59 +42,56 @@ const Dashboard = () => {
   }
   
   useEffect(() => {
-    const fetchPresData = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/geo`)
-        .then((response) => setgraphGeoDataPres(response.data));
-        setgraphGeoDataSenate([]);
-        setgraphGeoDataHouse([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: Presitental Elections:", error);
-      } 
-    };
+    // const fetchPresData = async() => {
+    //   try {
+    //     Axios.get(`/${displayYear}/${elections.pres.queryTerm}/geo`)
+    //     .then((response) => setgraphGeoDataPres(response.data));
+    //     setgraphGeoDataSenate([]);
+    //     setgraphGeoDataHouse([]);
+    //     console.log(displayYear, office)
+    //   } catch (error) {
+    //     console.log("Failed to retrive Data: Presitental Elections:", error);
+    //   } 
+    // };
 
-    const fetchSenateData = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.senate.queryTerm}/geo`)
-        .then((response) => setgraphGeoDataSenate(response.data));
-        setgraphGeoDataHouse([]);
-        setgraphGeoDataPres([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: Senate Elections");
-      } 
-    };
+    // const fetchSenateData = async() => {
+    //   try {
+    //     Axios.get(`/${displayYear}/${elections.senate.queryTerm}/geo`)
+    //     .then((response) => setgraphGeoDataSenate(response.data));
+    //     setgraphGeoDataHouse([]);
+    //     setgraphGeoDataPres([]);
+    //     console.log(displayYear, office)
+    //   } catch (error) {
+    //     console.log("Failed to retrive Data: Senate Elections");
+    //   } 
+    // };
 
-    const fetchHouseData = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.house.queryTerm}/geo`)
-          .then((response) => setgraphGeoDataHouse(response.data));
-          setgraphGeoDataSenate([]);
-          setgraphGeoDataPres([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: House Elections");
-      } 
-    };
+    // const fetchHouseData = async() => {
+    //   try {
+    //     Axios.get(`/${displayYear}/${elections.house.queryTerm}/geo`)
+    //       .then((response) => setgraphGeoDataHouse(response.data));
+    //       setgraphGeoDataSenate([]);
+    //       setgraphGeoDataPres([]);
+    //       console.log(displayYear, office)
+    //   } catch (error) {
+    //     console.log("Failed to retrive Data: House Elections");
+    //   } 
+    // };
 
-    const fetchPresDataTotal = async() => {
-      try {
-        Axios.get(`/${displayYear}/${elections.pres.queryTerm}/total-state-year`)
-        .then((response) => setPresidentTotalVote(response.data));
-        // setgraphDataSenate([]);
-        // setgraphDataHouse([]);
-      } catch (error) {
-        console.log("Failed to retrive Data: Presitental Elections:", error);
-      } 
-    };
+    // const fetchPresDataTotal = async() => {
+    //   try {
+    //     Axios.get(`/${displayYear}/${elections.pres.queryTerm}/total-state-year`)
+    //     .then((response) => setPresidentTotalVote(response.data));
+    //     // setgraphDataSenate([]);
+    //     // setgraphDataHouse([]);
+    //   } catch (error) {
+    //     console.log("Failed to retrive Data: Presitental Elections:", error);
+    //   } 
+    // };
 
-    if (office === 'President') {
-      fetchPresData();
-      fetchPresDataTotal();
-    }
-    else if (office === 'Senate')
-      fetchSenateData();
-    else
-      fetchHouseData();
-  }, [displayYear, office])
+    fetchGeoData(displayYear, office, setgraphGeoData);
+    fetchDataTotal(displayYear, setTotalVote);
+  }, []);
 
 
   const getYearDisplayValue = () => {
@@ -111,6 +109,8 @@ const Dashboard = () => {
   const getOfficeDropDown = () => {
     return showOfficeDropDown;
   }
+  if(graphGeoData.features)
+    console.log(graphGeoData.features[0].properties)
 
   return (
     <div>
@@ -134,18 +134,19 @@ const Dashboard = () => {
             setDropDown={setYearShowDropDown}
             setDisplayValue={setShowDisplayYear}
             getDisplayValue={getYearDisplayValue}/>
+          <button 
+            onClick={() => {
+              fetchGeoData(displayYear, office, setgraphGeoData);
+              fetchDataTotal(displayYear, setTotalVote);
+            }}
+          >
+            Submit</button>
         </div>
         <div className='map-holder'>
-          {(graphGeoDataHouse || graphGeoDataPres || graphGeoDataSenate) &&
-            <USChoropleth data={
-              office === 'President' ? graphGeoDataPres :
-              office === 'Senate' ? graphGeoDataSenate :
-              graphGeoDataHouse
-              }/>
-          }
+          <USChoropleth data={graphGeoData}/>
         </div>
         <div>
-          <VerticalBar data={presidentTotalVote} />
+          <VerticalBar data={totalVote} />
         </div>
       </div>
     </div>

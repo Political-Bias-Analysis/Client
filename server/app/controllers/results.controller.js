@@ -3,6 +3,7 @@ require('pg').defaults.parseInt8 = true
 const { sequelize } = require("../models");
 const {pairData} = require("./helper/prepareData")
 const db = require("../models");
+const Op = require('sequelize').Op;
 
 const Results = db.results;
 
@@ -70,7 +71,6 @@ exports.getTotalVoteByOfficeStateYear = (req, res) => {
     }
     let final = []
     for (const [key, value] of Object.entries(result)) {
-      console.log(`${key}: ${value.DEM}`);
       final.push({year: key, DEM: value.DEM, REP:value.REP, IND:value.IND})
     }
     res.send(final);
@@ -90,7 +90,10 @@ exports.getGeoByOfficeAndYear = (req, res) => {
       // [sequelize.fn("MAX", sequelize.col('vote_count')), 'max_count']],
     where: {
         year: req.params.year,
-        office: req.params.office
+        office: req.params.office,
+        state: {
+          [Op.notIn]: ["AS", "GU", "MP", "VI"]
+        }
     },
     group: ["state", "party"],
     order: ["state", "party"]

@@ -22,7 +22,7 @@ const VerticalBar = ({data}) => {
         <Legend />
         <Bar dataKey="REP" fill="#E63946" />
         <Bar dataKey="DEM" fill="#457B9D" />
-        <Bar dataKey="IND" fill="#F9DEC9" />
+        {/* <Bar dataKey="IND" fill="#F9DEC9" /> */}
       </BarChart>
     </div>
   )
