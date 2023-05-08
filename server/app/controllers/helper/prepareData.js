@@ -6,11 +6,11 @@ exports.pairData = (electionData) => {
   electionData.forEach(element => {
     const currentVal = element.dataValues;
     if (currentVal.party === "DEM") {
-      stateKey[currentVal.state] = {...stateKey[currentVal.state], DEM:currentVal.max_percentage};
+      stateKey[currentVal.state] = {...stateKey[currentVal.state], "DEM":currentVal.max_percentage};
     } else if (currentVal.party === "REP") {
-      stateKey[currentVal.state] = {...stateKey[currentVal.state], REP:currentVal.max_percentage};
+      stateKey[currentVal.state] = {...stateKey[currentVal.state], "REP":currentVal.max_percentage};
     } else {
-      stateKey[currentVal.state] = {...stateKey[currentVal.state], IND:currentVal.max_percentage};
+      stateKey[currentVal.state] = {...stateKey[currentVal.state], "IND":currentVal.max_percentage};
     }
   });
   statesData.features.forEach(element => {

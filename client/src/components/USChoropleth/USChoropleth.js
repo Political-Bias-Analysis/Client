@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -10,9 +10,15 @@ import 'leaflet/dist/leaflet.css';
 import './USChoropleth.css'
 
 const USChoropleth = ({data}) => {
-
   const [showInfo, setShowInfo] = useState({})
   const center = [38.5, -96];
+
+  const geoJsonLayer = useRef(null);
+  useEffect(() => {
+    if (geoJsonLayer.current) {
+      geoJsonLayer.current.clearLayers().addData(data);
+    }
+  }, [data]);;
 
   const mapPolygonColorToDensity = (feature) => {
     const vote = Math.max(feature.DEM||0, feature.REP||0, feature.IND||0)
@@ -75,7 +81,7 @@ const USChoropleth = ({data}) => {
     height: '30vw',
     width: '80vh',
   };
-
+  console.log(data)
   return (
     <div className='map-container'>
       <h3> Choropleth of Election Vote Percentage </h3>
@@ -107,6 +113,7 @@ const USChoropleth = ({data}) => {
           {data.features && <GeoJSON 
             data={data.features} 
             style={style}
+            ref={geoJsonLayer}
             onEachFeature={onEachFeature}/>}
           </MapContainer>
         </div>

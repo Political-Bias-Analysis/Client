@@ -26,8 +26,8 @@ export const fetchGeoData =
     Axios.get(`/${displayYear}/${
       office === "President" ? elections.pres.queryTerm
       : office === "Senate" ? elections.senate.queryTerm
-      : office === "House"}/geo`)
-    .then((response) => setgraphGeoData(response.data));
+      : elections.house.queryTerm}/geo`)
+    .then((response) => {setgraphGeoData(response.data)});
   } catch (error) {
     console.log("Failed to retrive Data: Presitental Elections:", error);
   } 
