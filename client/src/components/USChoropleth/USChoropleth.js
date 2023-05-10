@@ -81,26 +81,25 @@ const USChoropleth = ({data}) => {
     height: '30vw',
     width: '80vh',
   };
-  console.log(data)
+  
+
   return (
     <div className='map-container'>
       <h3> Choropleth of Election Vote Percentage </h3>
       <div>
         <div>
-          {!showInfo.name && 
-            <div className="census-info-hover">
-              <strong>Election Vote Percentage by State</strong>    
-              <p>Click on each state for more details</p>
-            </div>
-          }
-          {showInfo.name && (
-            <ul className="census-info">
-              <li><strong>{showInfo.name}</strong></li><br/>
-              {showInfo.DEM && <li>Democratic Party: {showInfo.DEM}</li>}
-              {showInfo.REP && <li>Republican Party: {showInfo.REP}</li>}
-              {showInfo.IND && <li>Independent Party: {showInfo.IND}</li>}
-            </ul>
-          )}
+          <div className='census-info-hover'>
+            Vote Percentage by State
+            {!showInfo.name ? <p>Click on each state for more details</p>
+            : (
+              <ul className='census-info-list'>
+                <li className='census-info-text'>State: {showInfo.name}</li><br/>
+                {showInfo.DEM && <li className='census-info-text'>Democratic Party: {(showInfo.DEM * 100).toFixed(2)}%</li>}
+                {showInfo.REP && <li className='census-info-text'>Republican Party: {(showInfo.REP * 100).toFixed(2)}%</li>}
+                {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>}
+              </ul>
+            )}
+          </div>
           <MapContainer
             center={center}
             zoom={3.5}
