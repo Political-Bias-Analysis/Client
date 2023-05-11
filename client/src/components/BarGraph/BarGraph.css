@@ -1,4 +1,8 @@
-.map-container {
+.map-container-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 12px;
     padding: 1rem;
     margin: 1rem;

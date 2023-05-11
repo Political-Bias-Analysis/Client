@@ -134,7 +134,7 @@ const Dashboard = () => {
                 />
               </div>
               <div className='map-holder'>
-                <BarGraph data={totalVote} title={office}/>
+                <BarGraph data={totalVote} title={allYearsOffice}/>
               </div>
             </div>
           }

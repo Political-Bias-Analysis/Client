@@ -62,11 +62,11 @@ exports.getTotalVoteByOfficeStateYear = (req, res) => {
       // console.log(data[i].dataValues)
       let current = data[i].dataValues
       if (current.party === "DEM") {
-        result[current.year] = {...result[current.year], DEM: Number(current.sum_count)}
+        result[current.year] = {...result[current.year], DEM: (Number(current.sum_count)/1000000).toFixed(2)}
       } else if (current.party === "REP") {
-        result[current.year] = {...result[current.year], REP: Number(current.sum_count)}
+        result[current.year] = {...result[current.year], REP: (Number(current.sum_count)/1000000).toFixed(2)}
       } else {
-        result[current.year] = {...result[current.year], IND: Number(current.sum_count)}
+        result[current.year] = {...result[current.year], IND: (Number(current.sum_count)/1000000).toFixed(2)}
       }
     }
     let final = []

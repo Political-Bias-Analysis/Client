@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  Label
 } from "recharts";
 
 import "./BarGraph.css"
@@ -15,18 +15,20 @@ import "./BarGraph.css"
 const BarGraph = ({title, data}) => {
 
   return (
-    <div className='map-container'>
-      <p className='title'>Total Votes of the {title} Elections</p>
+    <div className='map-container-bar'>
+      <p className='title'>Total Votes of the {title} Elections (In Million)</p>
       
       <BarChart width={400} height={400} data={data}>
         <CartesianGrid strokeDasharray="5 5" />
-        <XAxis dataKey="year"/>
-        <YAxis/>
+        <XAxis dataKey="year" width={100}>
+          <Label value="Election Year" offset={1} position="bottom" />
+        </XAxis>
+        <YAxis label={{ value: 'Number of Votes (Million)', angle: -90, position: 'center', dx: -20}}/>
         <Tooltip />
         <Legend />
         <Bar dataKey="REP" fill="#E63946" />
         <Bar dataKey="DEM" fill="#457B9D" />
-        {/* <Bar dataKey="IND" fill="#F9DEC9" /> */}
+        {/* {title !== 'President' && <Bar dataKey="IND" fill="#F9DEC9" />} */}
       </BarChart>
     </div>
   )
