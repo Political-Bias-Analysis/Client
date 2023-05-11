@@ -4,7 +4,7 @@ import "./Navbar.css"
 const Navbar = () => {
   return (
     <div className='nav-container'>
-      <h1 className='header'>Explore Data</h1>
+      <h2 className='header'>Explore Data</h2>
       <ul className='nav-right-items'>
         <li>
           <a href="dashboard" className='a-link'>Dashboard</a>

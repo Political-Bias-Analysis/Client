@@ -61,11 +61,14 @@ export const fetchHouseData =
 
 export const fetchDataTotal = 
   async (
-    displayYear, 
+    office,
     setTotalVote,
   ) => {
   try {
-    Axios.get(`/${displayYear}/${elections.pres.queryTerm}/total-state-year`)
+    Axios.get(`/2020/${
+      office === "President" ? elections.pres.queryTerm
+      : office === "Senate" ? elections.senate.queryTerm
+      : elections.house.queryTerm}/total-state-year`)
     .then((response) => setTotalVote(response.data));
   } catch (error) {
     console.log("Failed to retrive Data: Presitental Elections:", error);

@@ -8,9 +8,9 @@ const CustomTitle = ({title}) => {
         <h1 className='header-text'>
             How Much Does Bias in Media Influence Election Outcomes?
         </h1>
-        <h1 className='title-text'>
+        <h2 className='title-text'>
             {title}
-        </h1>
+        </h2>
     </div>
   )
 }

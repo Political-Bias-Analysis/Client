@@ -1,23 +1,31 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import {
+  Box, 
+  Tab, 
+  Tabs,
+  Button,
+  createTheme, 
+  ThemeProvider 
+} from '@mui/material'
 
 import './Dashboard.css'
 import Navbar from '../../components/Navbar/Navbar'
 import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
-import VerticalBar from '../../components/VerticalBar/VerticalBar'
+import BarGraph from '../../components/BarGraph/BarGraph'
 
 import {fetchGeoData, fetchDataTotal} from './HelperAPI'
 
 
 const Dashboard = () => {
 
-  const [showYearDropDown, setYearShowDropDown] = useState(false)
-  const [displayYear, setShowDisplayYear] = useState(2020)
+  const [currentTab, setCurrentTab] = useState(0)
 
-  const [showOfficeDropDown, setOfficeDropDown] = useState(false)
+  const [displayYear, setShowDisplayYear] = useState(2020)
   const [office, setOfficeValue] = useState("President")
+  const [allYearsOffice, setAllYearsOffice] = useState("President")
 
   const [graphGeoData, setgraphGeoData] = useState([])
   const [totalVote, setTotalVote] = useState([])
@@ -40,62 +48,96 @@ const Dashboard = () => {
   
   useEffect(() => {
     fetchGeoData(displayYear, office, setgraphGeoData);
-    fetchDataTotal(displayYear, setTotalVote);
   }, []);
 
+  useEffect(() => {
+    fetchDataTotal(allYearsOffice, setTotalVote);
+  }, [allYearsOffice])
+
+  const getOffice = () => {
+    return office;
+  };
+
+  const getAllYearsOfficeValue = () => {
+    return allYearsOffice;
+  }
 
   const getYearDisplayValue = () => {
     return displayYear;
-  }
+  };
 
-  const getYearDropDownValue = () => {
-    return showYearDropDown;
-  }
+  const theme = createTheme({
+    palette: {
+      neutral: {
+        main: '#64748B',
+        contrastText: '#fff',
+      },
+    },
+  });
 
-  const getOfficeTerm = () => {
-    return office;
-  }
-
-  const getOfficeDropDown = () => {
-    return showOfficeDropDown;
-  }
-  console.log(graphGeoData)
   return (
     <div>
       <Navbar />
       <CustomTitle title="Dashboard" />
       <div className='page-container'>
-        <div className='button-container'>
-          <DropDown 
-            items={electionTerms}
-            getShowDropDown={getOfficeDropDown}
-            setDropDown={setOfficeDropDown}
-            setDisplayValue={setOfficeValue}
-            getDisplayValue={getOfficeTerm}/>
-          <DropDown 
-            items={
-              office === 'President' ? elections.pres.years : 
-              office === 'Senate' ? elections.senate.years :
-              elections.house.years
-            }
-            getShowDropDown={getYearDropDownValue}
-            setDropDown={setYearShowDropDown}
-            setDisplayValue={setShowDisplayYear}
-            getDisplayValue={getYearDisplayValue}/>
-          <button 
-            onClick={() => {
-              fetchGeoData(displayYear, office, setgraphGeoData);
-            }}
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs 
+            value={currentTab} 
+            onChange={(e, tabIndex) => setCurrentTab(tabIndex)} 
+            aria-label="basic tabs example"
           >
-            Submit
-          </button>
-        </div>
-        <div className='map-holder'>
-          <USChoropleth data={graphGeoData}/>
-        </div>
-        <div>
-          <VerticalBar data={totalVote} />
-        </div>
+          <Tab label="Data Analysis By Year"/>
+          <Tab label="Time Series Analysis"/>
+          </Tabs>
+        </Box>
+          {currentTab === 0 &&
+            <div className='mock-container'>
+              <div className='button-container'>
+                <DropDown 
+                  items={electionTerms}
+                  dropdownID={"Election"}
+                  setDisplayValue={setOfficeValue}
+                  getDisplayValue={getOffice}
+                />
+                <DropDown 
+                  items={
+                    office === 'President' ? elections.pres.years
+                    : office === 'Sentate' ? elections.senate.years
+                    : elections.house.years
+                  }
+                  dropdownID={"Year"}
+                  setDisplayValue={setShowDisplayYear}
+                  getDisplayValue={getYearDisplayValue}
+                />
+                <div className='button-style-mui'>
+                  <ThemeProvider theme={theme}>
+                    <Button variant='outlined' color="neutral" onClick={() => {fetchGeoData(displayYear, office, setgraphGeoData)}}>
+                      Display
+                    </Button>
+                  </ThemeProvider>
+                </div>
+              </div>
+              <div className='map-holder'>
+                <USChoropleth data={graphGeoData}/>
+              </div>
+            </div>
+          }
+          {
+            currentTab === 1 && 
+            <div className='mock-container'>
+              <div className='button-container'>
+                <DropDown 
+                  items={electionTerms}
+                  dropdownID={"Elections"}
+                  setDisplayValue={setAllYearsOffice}
+                  getDisplayValue={getAllYearsOfficeValue}
+                />
+              </div>
+              <div className='map-holder'>
+                <BarGraph data={totalVote} title={office}/>
+              </div>
+            </div>
+          }
       </div>
     </div>
   )

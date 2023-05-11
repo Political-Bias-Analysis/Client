@@ -1,38 +1,32 @@
 import React from 'react'
-import "./DropDown.css"
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
+} from '@mui/material'
+import './DropDown.css'
 
 const DropDown = ({
   items, 
-  getShowDropDown,
-  setDropDown, 
+  dropdownID,
   setDisplayValue,
   getDisplayValue }
   ) => {
   return (
-    <div className='container'>
-      <button
-        onClick={() => setDropDown(!getShowDropDown())}
-        className="select-button"
-      >
-        {getDisplayValue()}
-      </button>
-
-      {getShowDropDown() && 
-        <div className='options-container'>
-          <div className='inner-options-container'>
-            <ul className="year-options">
-              {items.map((value) => 
-                <li 
-                  onClick={() => {setDisplayValue(value); setDropDown(!getShowDropDown())}}
-                  className="year-item"
-                  key={value}
-                >
-                  {value}
-                </li>)}
-            </ul>
-          </div>
-        </div>
-      }
+    <div className='dropdown'>
+      <FormControl variant="outlined" fullwidth>
+        <InputLabel id={dropdownID}>{dropdownID}</InputLabel>
+        <Select
+          labelId={dropdownID}
+          id={dropdownID}
+          value={getDisplayValue()}
+          label={dropdownID}
+          onChange={(e) => setDisplayValue(e.target.value)}
+        >
+          {items.map((value) => <MenuItem value={value}>{value}</MenuItem>)}
+        </Select>
+  </FormControl>
     </div>
   )
 }

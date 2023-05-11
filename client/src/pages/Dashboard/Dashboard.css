@@ -10,13 +10,26 @@
     grid-row-gap: 0px;
 }
 
+.mock-container {
+    border: 1px solid #212529;
+    margin: 1rem;
+    border-radius: 2rem;
+}
+
 .button-container {
     display: flex;
-
+    margin: 1rem;
 }
 
 .map-holder {
-    border: 2px solid #000000;
+    display: flex;
     border-radius: 16px;
-    margin: 1rem;
+    margin: 1rem 0rem 1rem 1rem;
+    /* justify-content: space-around; */
+    align-items: center;
+}
+
+.button-style-mui {
+    margin:1rem;
+    align-self: center;
 }

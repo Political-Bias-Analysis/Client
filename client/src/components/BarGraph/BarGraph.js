@@ -7,14 +7,18 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer,
+  ResponsiveContainer
 } from "recharts";
 
-const VerticalBar = ({data}) => {
+import "./BarGraph.css"
+
+const BarGraph = ({title, data}) => {
 
   return (
-    <div style={{margin: '3rem'}}>
-      <BarChart width={600} height={500} data={data}>
+    <div className='map-container'>
+      <p className='title'>Total Votes of the {title} Elections</p>
+      
+      <BarChart width={400} height={400} data={data}>
         <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="year"/>
         <YAxis/>
@@ -28,4 +32,4 @@ const VerticalBar = ({data}) => {
   )
 }
 
-export default VerticalBar
+export default BarGraph
