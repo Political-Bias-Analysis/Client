@@ -22,42 +22,16 @@ export const fetchGeoData =
     setgraphGeoData,
   ) => {
   try {
-    console.log(displayYear, office)
-    Axios.get(`/${displayYear}/${
+    Axios.get(`/geo/${displayYear}/${
       office === "President" ? elections.pres.queryTerm
       : office === "Senate" ? elections.senate.queryTerm
-      : elections.house.queryTerm}/geo`)
+      : elections.house.queryTerm}`)
     .then((response) => {setgraphGeoData(response.data)});
   } catch (error) {
-    console.log("Failed to retrive Data: Presitental Elections:", error);
+    console.log("Failed to retrive Geo Data - Elections:", error);
   } 
 };
 
-export const fetchSenateData = 
-  async(
-    displayYear, 
-    setgraphGeoData,
-  ) => {
-  try {
-    Axios.get(`/${displayYear}/${elections.senate.queryTerm}/geo`)
-    .then((response) => setgraphGeoData(response.data));
-  } catch (error) {
-    console.log("Failed to retrive Data: Senate Elections");
-  } 
-};
-
-export const fetchHouseData = 
-  async (
-    displayYear, 
-    setgraphGeoData,
-    ) => {
-  try {
-    Axios.get(`/${displayYear}/${elections.house.queryTerm}/geo`)
-      .then((response) => setgraphGeoData(response.data));
-  } catch (error) {
-    console.log("Failed to retrive Data: House Elections");
-  } 
-};
 
 export const fetchDataTotal = 
   async (
@@ -65,13 +39,25 @@ export const fetchDataTotal =
     setTotalVote,
   ) => {
   try {
-    Axios.get(`/2020/${
+    Axios.get(`/total-state-year/2020/${
       office === "President" ? elections.pres.queryTerm
       : office === "Senate" ? elections.senate.queryTerm
-      : elections.house.queryTerm}/total-state-year`)
+      : elections.house.queryTerm}`)
     .then((response) => setTotalVote(response.data));
   } catch (error) {
-    console.log("Failed to retrive Data: Presitental Elections:", error);
+    console.log("Failed to retrive Total Data - Elections:", error);
   } 
 };
 
+export const fetchVoteRegisByYear = 
+  async (
+    year,
+    setVoteRegis
+  ) => {
+    try {
+      Axios.get(`/get-voter-regis/${year}`)
+      .then((response) => setVoteRegis(response.data));
+    } catch (error) {
+      console.log("Failed to retrive Vote Regis Data", error)
+    }
+  }

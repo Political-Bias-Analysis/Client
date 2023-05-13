@@ -15,8 +15,13 @@ import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import BarGraph from '../../components/BarGraph/BarGraph'
+import DotPlot from '../../components/DotPlot/DotPlot'
 
-import {fetchGeoData, fetchDataTotal} from './HelperAPI'
+import {
+  fetchGeoData, 
+  fetchDataTotal, 
+  fetchVoteRegisByYear
+} from './HelperAPI'
 
 
 const Dashboard = () => {
@@ -29,6 +34,7 @@ const Dashboard = () => {
 
   const [graphGeoData, setgraphGeoData] = useState([])
   const [totalVote, setTotalVote] = useState([])
+  const [voteRegisData, setVoteRegisData] = useState([])
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -51,6 +57,10 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    fetchVoteRegisByYear(displayYear, setVoteRegisData);
+  }, [displayYear])
+
+  useEffect(() => {
     fetchDataTotal(allYearsOffice, setTotalVote);
   }, [allYearsOffice])
 
@@ -70,15 +80,17 @@ const Dashboard = () => {
     palette: {
       neutral: {
         main: '#64748B',
-        contrastText: '#fff',
+        contrastText: '#ffffff',
       },
     },
   });
 
+  // console.log(voteRegisData)
+
   return (
     <div>
       <Navbar />
-      <CustomTitle title="Dashboard" />
+      {/* <CustomTitle title="Dashboard" /> */}
       <div className='page-container'>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs 
@@ -118,6 +130,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className='map-holder'>
+                <DotPlot data={voteRegisData}/>
                 <USChoropleth data={graphGeoData}/>
               </div>
             </div>

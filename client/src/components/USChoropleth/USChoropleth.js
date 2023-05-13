@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
-  GeoJSON,
+  GeoJSON
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Card, Tooltip } from '@mui/material';
 
 import './USChoropleth.css'
 
@@ -88,7 +89,7 @@ const USChoropleth = ({data}) => {
       <h3> Choropleth of Election Vote Percentage </h3>
       <div>
         <div>
-          <div className='census-info-hover'>
+          <Card className='census-info-hover'>
             Vote Percentage by State
             {!showInfo.name ? <p>Click on each state for more details</p>
             : (
@@ -99,7 +100,7 @@ const USChoropleth = ({data}) => {
                 {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>}
               </ul>
             )}
-          </div>
+          </Card>
           <MapContainer
             center={center}
             zoom={3.5}
