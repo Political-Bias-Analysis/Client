@@ -3,16 +3,17 @@ import { useState, useEffect, useRef } from 'react';
 import {
   MapContainer,
   TileLayer,
-  GeoJSON
+  GeoJSON,
+  ZoomControl
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Card, Tooltip } from '@mui/material';
+import { Paper, Tooltip } from '@mui/material';
 
 import './USChoropleth.css'
 
 const USChoropleth = ({data}) => {
   const [showInfo, setShowInfo] = useState({})
-  const center = [38.5, -96];
+  const center = [37, -96];
 
   const geoJsonLayer = useRef(null);
   useEffect(() => {
@@ -79,8 +80,8 @@ const USChoropleth = ({data}) => {
   }
   
   const mapStyle = {
-    height: '30vw',
-    width: '80vh',
+    height: '25vw',
+    width: '70vh',
   };
   
 
@@ -89,7 +90,7 @@ const USChoropleth = ({data}) => {
       <h3> Choropleth of Election Vote Percentage </h3>
       <div>
         <div>
-          <Card className='census-info-hover'>
+          <Paper className='census-info-hover'>
             Vote Percentage by State
             {!showInfo.name ? <p>Click on each state for more details</p>
             : (
@@ -100,12 +101,14 @@ const USChoropleth = ({data}) => {
                 {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>}
               </ul>
             )}
-          </Card>
+          </Paper>
           <MapContainer
             center={center}
             zoom={3.5}
             style={mapStyle}
+            zoomControl={false}
           >
+          {/* <ZoomControl position='bottomRight'/> */}
           <TileLayer
             url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
             attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

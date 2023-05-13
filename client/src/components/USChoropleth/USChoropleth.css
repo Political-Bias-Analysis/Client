@@ -23,10 +23,12 @@
 
 .census-info-hover{
   z-index: 999;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
   width: 30%;
-  margin: 1rem 1rem;
+  max-height: 30%;
+  overflow: auto;
+  margin: 1rem;
   padding: 10px 10px;
   border-radius: 5px;
   color: white;
@@ -37,6 +39,7 @@
   font-weight: bold;
   border: 1px solid #212529;
   padding: 1rem;
+  opacity: 80%;
 }
 
 .census-info-list {
