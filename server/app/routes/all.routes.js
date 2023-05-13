@@ -1,6 +1,7 @@
 module.exports = app => {
     const results = require("../controllers/results.controller.js");
-    const voters = require("../controllers/voters.controller.js")
+    // const voters = require("../controllers/voters.controller.js");
+    const votersView = require("../controllers/votersView.controller.js");
     var router = require("express").Router();
 
     // GET ITEMS FROM RESULTS
@@ -9,7 +10,7 @@ module.exports = app => {
     router.get("/geo/:year/:office", results.getGeoByOfficeAndYear);
     router.get("/max/:year/:office", results.getMaxVotesByOfficeAndYear);
 
-    router.get("/get-voter-regis/:year", voters.getVoterRegistrationByYear);
+    router.get("/get-voter-regis/:year", votersView.getVoterRegistrationByYear);
 
     app.use("/api", router);
 }

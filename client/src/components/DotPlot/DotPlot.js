@@ -12,13 +12,23 @@ import {
 
 import './DotPlot.css'
 
+
 const DotPlot = ({data}) => {
-  console.log(data)
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      console.log(active, payload, label)
+      
+    }
+  
+    return null;
+  };
+  
   return (
       <Paper className='dot-plot-paper'>
         <p className='title-dot-plot'>Percentage of Registered Voters by State</p>
         <ScatterChart
-          width={500}
+          width={600}
           height={1500}
           margin={{
             top: 20,
@@ -30,7 +40,7 @@ const DotPlot = ({data}) => {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="registeredPer" type="number" name="registeredPer"/>
           <YAxis type="category" dataKey="state" name="state" />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3' }} />
           <Legend />
           <Scatter name='Percentage of Registered Voters'  data={data} fill='#00BBE0'/>
         </ScatterChart>
@@ -38,4 +48,4 @@ const DotPlot = ({data}) => {
   )
 }
 
-export default DotPlot
+export default DotPlot;

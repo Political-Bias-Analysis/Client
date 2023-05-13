@@ -4,11 +4,11 @@ const { sequelize } = require("../models");
 const db = require("../models");
 const Op = require('sequelize').Op;
 
-const Voters = db.voters;
+const VotersView = db.votersView;
 
 exports.getVoterRegistrationByYear = (req, res) => {
-  Voters.findAll({
-    attributes: ['state', ['norm_voter_pop', 'registeredPer']],
+  VotersView.findAll({
+    attributes: ['state', 'state_name', ['norm_voter_pop', 'registeredPer']],
     where: {
       year: req.params.year,
       state: {
@@ -17,6 +17,7 @@ exports.getVoterRegistrationByYear = (req, res) => {
     },
     order: [['norm_voter_pop', 'ASC']]
   }).then(data =>{
+      console.log(data)
       res.send(data);
   }).catch (error => {
       res.status(500).send({
