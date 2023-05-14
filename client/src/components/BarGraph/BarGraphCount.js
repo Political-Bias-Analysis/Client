@@ -17,8 +17,7 @@ const BarGraphCount = ({ data}) => {
   return (
     <div className='map-container-bar'>
       <p className='title'>Article Count By Source and Biased Term</p>
-      
-      <BarChart width={500} height={400} data={data}>
+      <BarChart width={500} height={425} data={data}>
         <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="main_bias" width={100}>
           <Label value="Biased Term" offset={1} position="bottom" />

@@ -16,7 +16,7 @@ import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import BarGraph from '../../components/BarGraph/BarGraph'
 import BarGraphCount from '../../components/BarGraph/BarGraphCount'
-import DotPlot from '../../components/DotPlot/DotPlot'
+import DotPlot from '../../components/DotPlot/DotPlot';
 import {
   ChoroplethLegendDem,
   ChoroplethLegendRep
@@ -66,11 +66,11 @@ const Dashboard = () => {
   useEffect(() => {
     fetchVoteRegisByYear(displayYear, setVoteRegisData);
     fetchArticleCountByYear(displayYear, setArticleCount);
-  }, [displayYear])
+  }, [])
 
   useEffect(() => {
     fetchDataTotal(allYearsOffice, setTotalVote);
-  }, [allYearsOffice])
+  }, [])
 
   const getOffice = () => {
     return office;
@@ -131,32 +131,31 @@ const Dashboard = () => {
                 />
                 <div className='button-style-mui'>
                   <ThemeProvider theme={theme}>
-                    <Button variant='outlined' color="neutral" onClick={() => {fetchGeoData(displayYear, office, setgraphGeoData)}}>
+                    <Button variant='outlined' color="neutral" 
+                      onClick={() => {
+                        fetchGeoData(displayYear, office, setgraphGeoData);
+                        fetchVoteRegisByYear(displayYear, setVoteRegisData);
+                        fetchArticleCountByYear(displayYear, setArticleCount);
+                        }}>
                       Display
                     </Button>
                   </ThemeProvider>
                 </div>
               </div>
               <div className='map-holder'>
-                  <Grid container spacing={2}>
-                    <Grid item xs={5}>
-                      <DotPlot data={voteRegisData}/>
+                  <Grid container spacing={1}>
+                    <Grid item xs={5.5}>
+                      <USChoropleth data={graphGeoData}/>
                     </Grid>
-                    <Grid item xs={7}>
-                      <Grid container>
-                        <Grid item xs={2}>
-                          <USChoropleth data={graphGeoData}/>
-                        </Grid>
-                        <Grid item xs={1}>
-                          <ChoroplethLegendDem/>
-                          <ChoroplethLegendRep/>
-                        </Grid>
-                        <Grid item xs={1}>
-                        </Grid>
-                        <Grid item xs={4}>
-                          <BarGraphCount data={articleCount}/>
-                        </Grid>
-                      </Grid>
+                    <Grid item xs={2}>
+                      <ChoroplethLegendDem/>
+                      <ChoroplethLegendRep/>
+                    </Grid>
+                    <Grid item xs={4.5}>
+                      <BarGraphCount data={articleCount}/>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <DotPlot data={voteRegisData}/>
                     </Grid>
                   </Grid>
               </div>

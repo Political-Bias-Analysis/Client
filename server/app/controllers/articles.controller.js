@@ -36,7 +36,6 @@ exports.getArticleCountByYear = (req, res) => {
           result[main] = {...result[main], CBS: current.count}
         }
       }
-      console.log(result)
       let final = [];
       for (const [key, value] of Object.entries(result)) {
         final.push({main_bias: key, CNN: value.CNN, FOX:value.FOX, NPR:value.NPR, CBS:value.CBS})

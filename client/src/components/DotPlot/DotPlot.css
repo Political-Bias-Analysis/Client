@@ -4,7 +4,7 @@
     border-radius: 1rem;
     border: 1px solid #212529;
     background-color: #FFFFFF;
-    margin-left: 1rem;
+    margin: 0rem 1rem 1rem 1rem;
 }
 .dot-plot-paper {
     max-height: 57.5vw;
