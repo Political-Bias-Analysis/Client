@@ -15,12 +15,15 @@ import CustomTitle from '../../components/CustomTitle/CustomTitle'
 import DropDown from '../../components/DropDownSelection/DropDown'
 import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import BarGraph from '../../components/BarGraph/BarGraph'
+import BarGraphCount from '../../components/BarGraph/BarGraphCount'
 import DotPlot from '../../components/DotPlot/DotPlot'
+
 
 import {
   fetchGeoData, 
   fetchDataTotal, 
-  fetchVoteRegisByYear
+  fetchVoteRegisByYear,
+  fetchArticleCountByYear
 } from './HelperAPI'
 
 
@@ -35,6 +38,7 @@ const Dashboard = () => {
   const [graphGeoData, setgraphGeoData] = useState([])
   const [totalVote, setTotalVote] = useState([])
   const [voteRegisData, setVoteRegisData] = useState([])
+  const [articleCount, setArticleCount] = useState([])
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -58,6 +62,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchVoteRegisByYear(displayYear, setVoteRegisData);
+    fetchArticleCountByYear(displayYear, setArticleCount);
   }, [displayYear])
 
   useEffect(() => {
@@ -132,6 +137,7 @@ const Dashboard = () => {
               <div className='map-holder'>
                 <DotPlot data={voteRegisData}/>
                 <USChoropleth data={graphGeoData}/>
+                <BarGraphCount data={articleCount}/>
               </div>
             </div>
           }

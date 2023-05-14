@@ -60,4 +60,17 @@ export const fetchVoteRegisByYear =
     } catch (error) {
       console.log("Failed to retrive Vote Regis Data", error)
     }
-  }
+};
+
+export const fetchArticleCountByYear = 
+  async (
+    year,
+    setArticleCount
+  ) => {
+    try {
+      Axios.get(`/get-article-count-by-year/${year}`)
+      .then((response) => setArticleCount(response.data));
+    } catch (error) {
+      console.log("Failed to retrive Vote Regis Data", error)
+    }
+};
