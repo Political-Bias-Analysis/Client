@@ -1,12 +1,13 @@
 .dot-plot-container {
-    max-height: 35vw;
+    max-height: 62vw;
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid #212529;
     background-color: #FFFFFF;
+    margin-left: 1rem;
 }
 .dot-plot-paper {
-    max-height: 30vw;
+    max-height: 57.5vw;
     overflow: auto;
     padding: 1rem;
     display: flex;

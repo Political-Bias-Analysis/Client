@@ -2,14 +2,6 @@
     display: relative;
 }
 
-.graph-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
 .mock-container {
     border: 1px solid #212529;
     background-color: #EBEBEB;
@@ -23,7 +15,7 @@
 }
 
 .map-holder {
-    display: flex;
+    /* display: flex; */
     border-radius: 16px;
     margin: 1rem 0rem 1rem 1rem;
     /* justify-content: space-around; */

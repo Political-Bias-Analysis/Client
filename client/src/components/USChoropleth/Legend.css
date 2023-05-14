@@ -1,0 +1,23 @@
+.legend {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem 2rem; 
+    box-shadow: 0 0 5px 0 rgba(184, 140, 140, 0.3);
+    font-size:12px;
+    letter-spacing:2px;
+    background: #FFFFFF;
+    border-radius:1rem;
+    border: 1px solid #212529;
+  }
+
+.inner-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text{
+    font-weight: bold;
+    margin-bottom: 0px;
+}

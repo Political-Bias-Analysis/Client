@@ -8,7 +8,7 @@ import {
   createTheme, 
   ThemeProvider 
 } from '@mui/material'
-
+import Grid from '@mui/material/Unstable_Grid2';
 import './Dashboard.css'
 import Navbar from '../../components/Navbar/Navbar'
 import CustomTitle from '../../components/CustomTitle/CustomTitle'
@@ -17,7 +17,10 @@ import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import BarGraph from '../../components/BarGraph/BarGraph'
 import BarGraphCount from '../../components/BarGraph/BarGraphCount'
 import DotPlot from '../../components/DotPlot/DotPlot'
-
+import {
+  ChoroplethLegendDem,
+  ChoroplethLegendRep
+} from '../../components/USChoropleth/ChoroplethLegend';
 
 import {
   fetchGeoData, 
@@ -135,9 +138,27 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className='map-holder'>
-                <DotPlot data={voteRegisData}/>
-                <USChoropleth data={graphGeoData}/>
-                <BarGraphCount data={articleCount}/>
+                  <Grid container spacing={2}>
+                    <Grid item xs={5}>
+                      <DotPlot data={voteRegisData}/>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <Grid container>
+                        <Grid item xs={2}>
+                          <USChoropleth data={graphGeoData}/>
+                        </Grid>
+                        <Grid item xs={1}>
+                          <ChoroplethLegendDem/>
+                          <ChoroplethLegendRep/>
+                        </Grid>
+                        <Grid item xs={1}>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <BarGraphCount data={articleCount}/>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
               </div>
             </div>
           }
