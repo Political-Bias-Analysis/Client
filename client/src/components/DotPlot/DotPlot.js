@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper } from '@mui/material'
+import { Paper, Card } from '@mui/material'
 import { 
   ScatterChart,
   CartesianGrid,
@@ -17,7 +17,13 @@ const DotPlot = ({data}) => {
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      console.log(active, payload, label)
+      console.log(payload[0].payload.state_name)
+      return (
+        <Card className="custom-toolkit">
+          <p className="label">{`State : ${payload[0].payload.state_name}`}</p>
+          <p className="intro">{`Vote Percentage : ${payload[0].value}%`}</p>
+        </Card>
+      )
       
     }
   
@@ -25,6 +31,7 @@ const DotPlot = ({data}) => {
   };
   
   return (
+    <div className='dot-plot-container'>
       <Paper className='dot-plot-paper'>
         <p className='title-dot-plot'>Percentage of Registered Voters by State</p>
         <ScatterChart
@@ -44,7 +51,8 @@ const DotPlot = ({data}) => {
           <Legend />
           <Scatter name='Percentage of Registered Voters'  data={data} fill='#00BBE0'/>
         </ScatterChart>
-    </Paper>
+      </Paper>
+    </div>
   )
 }
 

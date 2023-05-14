@@ -1,15 +1,27 @@
-.dot-plot-paper {
+.dot-plot-container {
     max-height: 35vw;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #212529;
+    background-color: #FFFFFF;
+}
+.dot-plot-paper {
+    max-height: 30vw;
     overflow: auto;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border-radius: 2rem; */
-    border: 1px solid #212529;
 }
-
 .title-dot-plot {
     font-weight: bold;
     font-size: 1rem;
+}
+.custom-toolkit {
+    opacity: 80%;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 1rem;
+    border: 1px solid #212529;
 }

@@ -15,4 +15,5 @@ db.sequelize = sequelize;
 db.results = require("./results.model.js")(sequelize, Sequelize);
 // db.voters = require("./voters.model.js")(sequelize, Sequelize);
 db.votersView = require("./votersView.model.js")(sequelize, Sequelize);
+db.articles = require("./articles.model.js")(sequelize, Sequelize);
 module.exports = db;
