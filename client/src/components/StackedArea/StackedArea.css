@@ -1,0 +1,12 @@
+.stacked-area-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #212529;
+}
+
+.article-title {
+    font-weight: bold;
+    text-align: center;
+}

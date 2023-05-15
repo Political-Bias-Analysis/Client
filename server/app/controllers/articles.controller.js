@@ -8,7 +8,6 @@ exports.getArticleCountByYear = (req, res) => {
 
     const startDate = new Date(req.params.year, 0, 1).toLocaleDateString();
     const endDate = new Date(req.params.year, 12, 0).toLocaleDateString();
-    console.log(startDate, endDate)
     Articles.findAll({
         attributes: [
             'source', 
@@ -40,11 +39,62 @@ exports.getArticleCountByYear = (req, res) => {
       for (const [key, value] of Object.entries(result)) {
         final.push({main_bias: key, CNN: value.CNN, FOX:value.FOX, NPR:value.NPR, CBS:value.CBS})
       }
-
       res.send(final);
     }).catch (error => {
       res.status(500).send({
       message: error
     })
   })
+}
+
+exports.getAllArticleCountByYearAndTerm = async (req, res) => {
+  
+  data = await db.sequelize.query("select extract(YEAR from published_date) as year, main_bias, count(headline) from all_articles where extract(YEAR from published_date) between 2016 and 2022 group by (year, main_bias) order by year;")
+  let result = {}
+
+  for (let i = 0; i < data[0].length; ++i) {
+    let current = data[0][i];
+    let year = current.year
+    if (current.main_bias === "Abortion") {
+      result[year] = {...result[year], abortion: current.count}
+    } else if (current.main_bias === "immigration") {
+      result[year] = {...result[year], immigration: current.count}
+    } else if (current.main_bias === "racial") {
+      result[year] = {...result[year], racial: current.count}
+    } else if (current.main_bias === "socioeconomic") {
+      result[year] = {...result[year], socioeconomic: current.count}
+    }
+  }
+  let final = [];
+  for (const [key, value] of Object.entries(result)) {
+    final.push({year: key, abortion: value.abortion, immigration:value.immigration, 
+      racial:value.racial, socioeconomic:value.socioeconomic})
+  }
+  res.send(final)
+
+}
+
+exports.getArticlesTotal = (req, res) => {
+  Articles.findOne({
+    attributes: [[sequelize.fn('COUNT', sequelize.col("headline")), 'count']]
+  }).then(data =>{
+    res.send(data);
+  }).catch (error => {
+    res.status(500).send({
+    message: error
+  })
+})
+}
+
+exports.getAllArticlesBySource = (req, res) => {
+  Articles.findAll({
+    attributes: ["source", [sequelize.fn('COUNT', sequelize.col("headline")), 'count']],
+    group: ['source']
+  }).then(data =>{
+    res.send(data);
+  }).catch (error => {
+    res.status(500).send({
+    message: error
+  })
+})
 }

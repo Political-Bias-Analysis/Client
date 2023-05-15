@@ -9,16 +9,16 @@ import {
   Legend,
   Label
 } from "recharts";
-
+import { Paper } from '@mui/material';
 import "./BarGraph.css"
 
 const BarGraph = ({title, data}) => {
 
   return (
-    <div className='map-container-bar'>
+    <Paper className='map-container-bar' elevation={8}>
       <p className='title'>Total Votes of the {title} Elections (In Million)</p>
       
-      <BarChart width={400} height={400} data={data}>
+      <BarChart width={400} height={420} data={data}>
         <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="year" width={100}>
           <Label value="Election Year" offset={1} position="bottom" />
@@ -30,7 +30,7 @@ const BarGraph = ({title, data}) => {
         <Bar dataKey="DEM" fill="#457B9D" />
         {/* {title !== 'President' && <Bar dataKey="IND" fill="#F9DEC9" />} */}
       </BarChart>
-    </div>
+    </Paper>
   )
 }
 

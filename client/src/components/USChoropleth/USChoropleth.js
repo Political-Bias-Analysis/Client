@@ -4,10 +4,9 @@ import {
   MapContainer,
   TileLayer,
   GeoJSON,
-  ZoomControl
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Paper, Tooltip } from '@mui/material';
+import { Paper, Card } from '@mui/material';
 
 import './USChoropleth.css'
 
@@ -86,11 +85,11 @@ const USChoropleth = ({data}) => {
   
 
   return (
-    <div className='map-container'>
+    <Paper className='map-container' elevation={8}>
       <h3> Choropleth of Election Vote Percentage </h3>
       <div>
         <div>
-          <Paper className='census-info-hover'>
+          <Card className='census-info-hover'>
             Vote Percentage by State
             {!showInfo.name ? <p>Click on each state for more details</p>
             : (
@@ -101,7 +100,7 @@ const USChoropleth = ({data}) => {
                 {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>}
               </ul>
             )}
-          </Paper>
+          </Card>
           <MapContainer
             center={center}
             zoom={3.5}
@@ -121,7 +120,7 @@ const USChoropleth = ({data}) => {
           </MapContainer>
         </div>
       </div>
-    </div>
+    </Paper>
   );
 }
 

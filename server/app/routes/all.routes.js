@@ -17,6 +17,8 @@ module.exports = app => {
 
     // GET ITEMS FROM ARTICLES
     router.get("/get-article-count-by-year/:year", articles.getArticleCountByYear);
-
+    router.get("/get-all-articles-count", articles.getAllArticleCountByYearAndTerm);
+    router.get("/get-article-total-count", articles.getArticlesTotal);
+    router.get("/get-count-by-source", articles.getAllArticlesBySource)
     app.use("/api", router);
 }

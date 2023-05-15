@@ -17,6 +17,8 @@ import USChoropleth from '../../components/USChoropleth/USChoropleth'
 import BarGraph from '../../components/BarGraph/BarGraph'
 import BarGraphCount from '../../components/BarGraph/BarGraphCount'
 import DotPlot from '../../components/DotPlot/DotPlot';
+import StackedArea from '../../components/StackedArea/StackedArea';
+import {InfoCardCount, InfoCardSource} from '../../components/InfoCard/InfoCard';
 import {
   ChoroplethLegendDem,
   ChoroplethLegendRep
@@ -26,8 +28,12 @@ import {
   fetchGeoData, 
   fetchDataTotal, 
   fetchVoteRegisByYear,
-  fetchArticleCountByYear
+  fetchArticleCountByYear,
+  fetchAllArticleCount,
+  fetchArticleCount,
+  fetchArticleCountBySource
 } from './HelperAPI'
+
 
 
 const Dashboard = () => {
@@ -42,6 +48,11 @@ const Dashboard = () => {
   const [totalVote, setTotalVote] = useState([])
   const [voteRegisData, setVoteRegisData] = useState([])
   const [articleCount, setArticleCount] = useState([])
+  const [allArticleCount, setAllArticleCount] = useState([]) 
+  const [articleCountBySource, setAllArticleCountBySource] = useState([])
+
+  const [totalArticleCount, setTotalArticleCount] = useState(0);
+
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -61,16 +72,17 @@ const Dashboard = () => {
   
   useEffect(() => {
     fetchGeoData(displayYear, office, setgraphGeoData);
-  }, []);
-
-  useEffect(() => {
     fetchVoteRegisByYear(displayYear, setVoteRegisData);
     fetchArticleCountByYear(displayYear, setArticleCount);
-  }, [])
+    fetchAllArticleCount(setAllArticleCount);
+    fetchArticleCountBySource(setAllArticleCountBySource);
+    fetchArticleCount(setTotalArticleCount)
+  }, []);
+
 
   useEffect(() => {
     fetchDataTotal(allYearsOffice, setTotalVote);
-  }, [])
+  }, [allYearsOffice])
 
   const getOffice = () => {
     return office;
@@ -92,9 +104,7 @@ const Dashboard = () => {
       },
     },
   });
-
-  // console.log(voteRegisData)
-
+  console.log(articleCountBySource)
   return (
     <div>
       <Navbar />
@@ -173,7 +183,19 @@ const Dashboard = () => {
                 />
               </div>
               <div className='map-holder'>
-                <BarGraph data={totalVote} title={allYearsOffice}/>
+                <Grid container spacing={1}>
+                  <Grid xs={4}>
+                    <BarGraph data={totalVote} title={allYearsOffice}/>
+                  </Grid>
+                  <Grid xs={5.5}>
+                    <StackedArea data={allArticleCount}/>
+                  </Grid>
+                  <Grid xs={2.5}>
+                    <InfoCardCount title="Articles Count Summary" data={totalArticleCount}/>
+                    <InfoCardSource title="Articles Count By Source" data={articleCountBySource} />
+                  </Grid>
+                </Grid>
+
               </div>
             </div>
           }

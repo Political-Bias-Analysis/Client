@@ -71,6 +71,42 @@ export const fetchArticleCountByYear =
       Axios.get(`/get-article-count-by-year/${year}`)
       .then((response) => setArticleCount(response.data));
     } catch (error) {
-      console.log("Failed to retrive Vote Regis Data", error)
+      console.log("Failed to retrive Article Count Data By Year", error)
     }
 };
+
+export const fetchAllArticleCount = 
+  async (
+    setAllArticleCount
+  ) => {
+    try {
+      Axios.get(`/get-all-articles-count/`)
+      .then((response) => setAllArticleCount(response.data));
+    } catch (error) {
+      console.log("Failed to retrive all article count", error)
+    }
+  }
+
+export const fetchArticleCount = 
+  async (
+    setArticleCount
+  ) => {
+    try {
+      Axios.get(`/get-article-total-count/`)
+      .then((response) => setArticleCount(response.data));
+    } catch (error) {
+      console.log("Failed to retrive Vote Regis Data", error)
+    }
+  }
+
+  export const fetchArticleCountBySource = 
+  async (
+    setArticleCountBySourcr
+  ) => {
+    try {
+      Axios.get(`/get-count-by-source/`)
+      .then((response) => setArticleCountBySourcr(response.data));
+    } catch (error) {
+      console.log("Failed to retrive Vote Regis Data", error)
+    }
+  }

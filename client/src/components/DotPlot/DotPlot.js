@@ -32,8 +32,8 @@ const DotPlot = ({data}) => {
   };
   
   return (
-    <div className='dot-plot-container'>
-      <Paper className='dot-plot-paper'>
+    // <div className='dot-plot-container'>
+      <Paper className='dot-plot-paper' elevation={8}>
         <p className='title-dot-plot'>Percentage of Registered Voters by State</p>
         <ScatterChart
           width={1500}
@@ -57,7 +57,7 @@ const DotPlot = ({data}) => {
           <Scatter name='Percentage of Registered Voters'  data={data} fill='#00BBE0'/>
         </ScatterChart>
       </Paper>
-    </div>
+    // </div>
   )
 }
 
