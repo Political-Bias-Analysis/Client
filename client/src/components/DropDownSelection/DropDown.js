@@ -45,7 +45,7 @@ const DropDown = ({
         >
           {items.map((value) => <MenuItem value={value}>{value}</MenuItem>)}
         </Select>
-  </FormControl>
+      </FormControl>
     </div>
   )
 }

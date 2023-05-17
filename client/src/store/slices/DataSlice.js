@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import Axios from '../../controllers/axios'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   graphGeoData: [],

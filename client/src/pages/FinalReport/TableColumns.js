@@ -1,0 +1,31 @@
+export const articleHeaders = [
+  { field: 'headline', headerName: 'Headline', width: 300 },
+  { field: 'author', headerName: 'Author', width: 130 },
+  { field: 'source', headerName: 'Source', width: 80 },
+  { field: 'bias', headerName: 'Bias', width: 130 },
+  { field: 'published_date', headerName: 'Publised Date', width: 130 },
+  { field: 'url', headerName: 'URL', width: 130 },
+  { field: 'article_content', headerName: 'Article Content', width: 400 },
+]
+
+export const articleRows = [
+  { id: 1, headline: "Trump focuses on immigration issues ahead of midterm elections", author: 'Grace Segers', source: 'CBS', published_date: '2018-10-30', url: 'https://www.cbsnews.com/news/trump-focuses-on-immigration-issues-ahead-of-midterm-elections/?intcid=CNM-00-10abd1h', article_content:'Earlier this month, President Trump offered a campaign strategy for Republicans in the midterm elections...', bias: 'immigration'},
+
+  { id: 2, headline: "Clinton: Trump campaign built on \u2018prejudice and paranoia\u2019", author: 'Dan Merica', source: 'CNN', published_date: '2016-08-25', url: 'https://www.cnn.com/2016/08/25/politics/hillary-clinton-alt-right-speech-donald-trump-kkk/index.html', article_content:'Clinton is painting Trump as outside the norm of American politics The \"alt-right\" is a unorganized group that pushes racist, homophobic and sexist content online Hillary Clinton issued a blistering takedown of Donald Trump Thursday, accusing him of racism and arguing that \u201cfringe\u201d elements have taken over the Republican Party...', bias: 'racial'},
+
+  { id: 3, headline: "Parkland shooting looms large in the Broward County School Board race", author: 'Cassie Spodak', source: 'CNN', published_date: '2018-08-27', url: 'https://www.cbsnews.com/news/trump-focuses-on-immigration-issues-ahead-of-midterm-elections/?intcid=CNM-00-10abd1h', article_content:'Campaign signs sprout from the ground here at Northwest Regional Library, an early voting site in Coral Springs, Florida. Standing in front of the polls, two candidates on the ballot are having a conversation...', bias: 'socioeconomic'},
+
+  { id: 4, headline: "Trump nominates Brett Kavanaugh to Supreme Court", author: 'Samuel Chamberlain', source: 'FOX', published_date: '2018-07-09', url: 'https://www.foxnews.com/politics/trump-nominates-brett-kavanaugh-to-supreme-court', article_content:'President Trump nominates Judge Brett Kavanaugh to the Supreme Court. President Trump nominated appeals court judge Brett Kavanaugh to the Supreme Court Monday night to replace retiring Justice Anthony Kennedy...', bias: 'abortion'},
+
+  { id: 5, headline: "For Immigrants, Election Promises Relief From An 'Atmosphere Of Terror'", author: 'Joel Rose', source: 'NPR', published_date: '2020-11-18', url: 'https://www.npr.org/2020/11/18/935873090/for-immigrants-election-promises-relief-from-an-atmosphere-of-terror', article_content:'While campaigning in November 2019, Joe Biden talked with a protester about his stance on deportations at a town hall at Lander University in Greenwood, S.C. The Biden administration says it will rein in Immigration and Customs Enforcement, starting with a temporary moratorium on deportations....', bias: 'immigration'},
+
+  { id: 6, headline: "Trump casts doubt on the legitimacy of the election and refuses to condemn White supremacists in chaotic debate", author: 'Maeve Reston', source: 'CNN', published_date: '2020-09-30', url: 'https://www.cnn.com/2020/09/29/politics/us-election-first-presidential-debate/index.html', article_content:'At the end of a rancorous and chaotic debate \u2013 in which President Donald Trump tried to bulldoze challenger Joe Biden with insults, slashing interruptions and callous attacks on Biden\u2019s family \u2013 the President questioned the legitimacy of the November election, refused to say whether he would concede should he lose and declined to forcefully condemn White supremacists....', bias: 'racial'},
+
+  { id: 7, headline: "Biden says Catholic faith guides policies but gets hit on abortion, religious freedom", author: 'Caleb Parke', source: 'FOX', published_date: '2020-10-30', url: 'https://www.foxnews.com/politics/biden-catholic-vote-2020-election-religious-liberty', article_content:'Joe Biden is touting his Catholic faith as groups are hitting him on issues held near and dear to the faithful and opposed by the church, including religious freedom for nuns and abortion....', bias: 'abortion'},
+
+  { id: 8, headline: "Oregon approves new taxes to address Medicaid costs", author: '', source: 'CBS', published_date: '2018-01-24', url: 'https://www.cbsnews.com/news/oregon-approves-new-taxes-to-address-medicaid-costs/?intcid=CNM-00-10abd1h', article_content:"\u00a0Oregon approved taxes on hospitals, health insurers and managed care companies in an unusual special election Tuesday that asked voters \u2014 and not lawmakers \u2014 how to pay for Medicaid costs that now include coverage of hundreds of thousands of low-income residents added to the program's rolls under the Affordable Care Act", bias: 'socioeconomic'},
+
+  { id: 9, headline: "How Trump Has Put His Mark On Policy, Slowly", author: 'Scott Horsley', source: 'NPR', published_date: '2017-11-06', url: 'https://www.npr.org/2017/11/06/561449128/how-trump-has-put-his-mark-on-policy-slowly', article_content:"During his tenure as president, Trump has signed a series of executive orders rolling back Obama-era regulations. During his tenure as president, Trump has signed a series of executive orders rolling back Obama-era regulations...", bias: 'immigration'},
+
+  { id: 10, headline: "Rising job opportunities for White working-class men could point to additional Trump support", author: 'Brittany De Lea', source: 'FOX', published_date: '2020-10-09', url: 'https://www.foxnews.com/politics/white-working-class-job-prospects-climb-trump-economy', article_content:'Earlier this month, President Trump offered a campaign strategy for Republicans in the midterm elections...', bias: 'socioeconomic'},
+]
