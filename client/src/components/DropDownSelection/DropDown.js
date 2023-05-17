@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
   FormControl,
   InputLabel,
@@ -7,12 +9,29 @@ import {
 } from '@mui/material'
 import './DropDown.css'
 
+import {
+  setShowDisplayYear,
+  setOfficeValue,
+  setAllYearsOffice,
+} from '../../store/slices/SelectionSlice'
+
 const DropDown = ({
   items, 
   dropdownID,
-  setDisplayValue,
-  getDisplayValue }
-  ) => {
+  getDisplayValue 
+}) => {
+  
+  const dispatch = useDispatch();
+  const setOnChange = (e) => {
+    if (dropdownID === 'Election') {
+      dispatch(setOfficeValue(e.target.value));
+    } else if (dropdownID === 'Year') {
+      dispatch(setShowDisplayYear(e.target.value))
+    } else if (dropdownID === 'Elections') {
+      dispatch(setAllYearsOffice(e.target.value));
+    }
+  };
+
   return (
     <div className='dropdown'>
       <FormControl variant="outlined" fullwidth>
@@ -22,7 +41,7 @@ const DropDown = ({
           id={dropdownID}
           value={getDisplayValue()}
           label={dropdownID}
-          onChange={(e) => setDisplayValue(e.target.value)}
+          onChange={(e) => setOnChange(e)}
         >
           {items.map((value) => <MenuItem value={value}>{value}</MenuItem>)}
         </Select>

@@ -9,6 +9,9 @@ import {
   ThemeProvider 
 } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2';
+import { useSelector, useDispatch } from 'react-redux'
+
+
 import './Dashboard.css'
 import Navbar from '../../components/Navbar/Navbar'
 import CustomTitle from '../../components/CustomTitle/CustomTitle'
@@ -29,30 +32,23 @@ import {
   fetchDataTotal, 
   fetchVoteRegisByYear,
   fetchArticleCountByYear,
-  fetchAllArticleCount,
-  fetchArticleCount,
-  fetchArticleCountBySource
-} from './HelperAPI'
+} from '../../controllers/HelperAPI'
 
+import { 
+  setgraphGeoData,
+  setTotalVote,
+  setVoteRegisData,
+  setArticleCount,
+} from '../../store/slices/DataSlice';
 
 
 const Dashboard = () => {
 
+  const dispatch = useDispatch();
+  const dataStore = useSelector((state) => state.DataInfo);
+  const selection = useSelector((state) => state.Selection);
+
   const [currentTab, setCurrentTab] = useState(0)
-
-  const [displayYear, setShowDisplayYear] = useState(2020)
-  const [office, setOfficeValue] = useState("President")
-  const [allYearsOffice, setAllYearsOffice] = useState("President")
-
-  const [graphGeoData, setgraphGeoData] = useState([])
-  const [totalVote, setTotalVote] = useState([])
-  const [voteRegisData, setVoteRegisData] = useState([])
-  const [articleCount, setArticleCount] = useState([])
-  const [allArticleCount, setAllArticleCount] = useState([]) 
-  const [articleCountBySource, setAllArticleCountBySource] = useState([])
-
-  const [totalArticleCount, setTotalArticleCount] = useState(0);
-
 
   const electionTerms = ["President", "Senate", "House"]
   const elections = {
@@ -70,30 +66,36 @@ const Dashboard = () => {
     }
   }
   
-  useEffect(() => {
-    fetchGeoData(displayYear, office, setgraphGeoData);
-    fetchVoteRegisByYear(displayYear, setVoteRegisData);
-    fetchArticleCountByYear(displayYear, setArticleCount);
-    fetchAllArticleCount(setAllArticleCount);
-    fetchArticleCountBySource(setAllArticleCountBySource);
-    fetchArticleCount(setTotalArticleCount)
-  }, []);
-
 
   useEffect(() => {
-    fetchDataTotal(allYearsOffice, setTotalVote);
-  }, [allYearsOffice])
+    const fetchAndSetDataTotal = async () => {
+      const data = await fetchDataTotal(selection.allYearsOffice);
+      dispatch(setTotalVote(data));
+    };
+    fetchAndSetDataTotal();
+    
+  }, [selection.allYearsOffice])
+
+
+  const onClickSelection = async () => {
+    const dataGeo = await fetchGeoData(selection.displayYear, selection.office);
+    const dataVote = await fetchVoteRegisByYear(selection.displayYear);
+    const dataArticle = await fetchArticleCountByYear(selection.displayYear);
+    dispatch(setgraphGeoData(dataGeo));
+    dispatch(setVoteRegisData(dataVote));
+    dispatch(setArticleCount(dataArticle));
+  }
 
   const getOffice = () => {
-    return office;
+    return selection.office;
   };
 
   const getAllYearsOfficeValue = () => {
-    return allYearsOffice;
+    return selection.allYearsOffice;
   }
 
   const getYearDisplayValue = () => {
-    return displayYear;
+    return selection.displayYear;
   };
 
   const theme = createTheme({
@@ -104,7 +106,6 @@ const Dashboard = () => {
       },
     },
   });
-  console.log(articleCountBySource)
   return (
     <div>
       <Navbar />
@@ -126,27 +127,21 @@ const Dashboard = () => {
                 <DropDown 
                   items={electionTerms}
                   dropdownID={"Election"}
-                  setDisplayValue={setOfficeValue}
                   getDisplayValue={getOffice}
                 />
                 <DropDown 
                   items={
-                    office === 'President' ? elections.pres.years
-                    : office === 'Sentate' ? elections.senate.years
+                    selection.office === 'President' ? elections.pres.years
+                    : selection.office === 'Sentate' ? elections.senate.years
                     : elections.house.years
                   }
                   dropdownID={"Year"}
-                  setDisplayValue={setShowDisplayYear}
                   getDisplayValue={getYearDisplayValue}
                 />
                 <div className='button-style-mui'>
                   <ThemeProvider theme={theme}>
                     <Button variant='outlined' color="neutral" 
-                      onClick={() => {
-                        fetchGeoData(displayYear, office, setgraphGeoData);
-                        fetchVoteRegisByYear(displayYear, setVoteRegisData);
-                        fetchArticleCountByYear(displayYear, setArticleCount);
-                        }}>
+                      onClick={onClickSelection}>
                       Display
                     </Button>
                   </ThemeProvider>
@@ -155,17 +150,17 @@ const Dashboard = () => {
               <div className='map-holder'>
                   <Grid container spacing={1}>
                     <Grid item xs={5.5}>
-                      <USChoropleth data={graphGeoData}/>
+                      <USChoropleth data={dataStore.graphGeoData}/>
                     </Grid>
                     <Grid item xs={2}>
                       <ChoroplethLegendDem/>
                       <ChoroplethLegendRep/>
                     </Grid>
                     <Grid item xs={4.5}>
-                      <BarGraphCount data={articleCount}/>
+                      <BarGraphCount data={dataStore.articleCount}/>
                     </Grid>
                     <Grid item xs={12}>
-                      <DotPlot data={voteRegisData}/>
+                      <DotPlot data={dataStore.voteRegisData}/>
                     </Grid>
                   </Grid>
               </div>
@@ -178,24 +173,22 @@ const Dashboard = () => {
                 <DropDown 
                   items={electionTerms}
                   dropdownID={"Elections"}
-                  setDisplayValue={setAllYearsOffice}
                   getDisplayValue={getAllYearsOfficeValue}
                 />
               </div>
               <div className='map-holder'>
                 <Grid container spacing={1}>
                   <Grid xs={4}>
-                    <BarGraph data={totalVote} title={allYearsOffice}/>
+                    <BarGraph data={dataStore.totalVote} title={selection.allYearsOffice}/>
                   </Grid>
                   <Grid xs={5.5}>
-                    <StackedArea data={allArticleCount}/>
+                    <StackedArea data={dataStore.allArticleCount}/>
                   </Grid>
                   <Grid xs={2.5}>
-                    <InfoCardCount title="Articles Count Summary" data={totalArticleCount}/>
-                    <InfoCardSource title="Articles Count By Source" data={articleCountBySource} />
+                    <InfoCardCount title="Articles Count Summary" data={dataStore.totalArticleCount}/>
+                    <InfoCardSource title="Articles Count By Source" data={dataStore.articleCountBySource} />
                   </Grid>
                 </Grid>
-
               </div>
             </div>
           }
