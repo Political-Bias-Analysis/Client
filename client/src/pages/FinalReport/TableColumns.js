@@ -29,3 +29,62 @@ export const articleRows = [
 
   { id: 10, headline: "Rising job opportunities for White working-class men could point to additional Trump support", author: 'Brittany De Lea', source: 'FOX', published_date: '2020-10-09', url: 'https://www.foxnews.com/politics/white-working-class-job-prospects-climb-trump-economy', article_content:'Earlier this month, President Trump offered a campaign strategy for Republicans in the midterm elections...', bias: 'socioeconomic'},
 ]
+
+export const electionHeaders = [
+  { field: 'year', headerName: 'Year', width: 180 },
+  { field: 'office', headerName: 'Office', width: 130 },
+  { field: 'last_name', headerName: 'Last Name', width: 150 },
+  { field: 'party', headerName: 'Party', width: 130 },
+  { field: 'vote_per', headerName: 'Vote %', width: 130 },
+  { field: 'vote_count', headerName: 'Vote Count', width: 130 },
+]
+
+export const electionRows = [
+  { id: 1, year: "2020", office: "Pres", state: "AL", last_name: "Trump", party: "REP", vote_per:"0.620316", vote_count:"1441170"},
+
+  { id: 2, year: "2020", office: "Pres", state: "AL", last_name: "Biden", party: "DEM", vote_per:"0.365700", vote_count:"849624"},
+
+  { id: 3, year: "2020", office: "Pres", state: "AL", last_name: "Jorgensen", party: "IND", vote_per:"0.010836", vote_count:"25176"},
+
+  { id: 4, year: "2020", office: "Pres", state: "AK", last_name: "Trump", party: "REP", vote_per:"0.528331", vote_count:"189951"},
+
+  { id: 5, year: "2020", office: "Pres", state: "AK", last_name: "Biden", party: "DEM", vote_per:"0.528331", vote_count:"153778"},
+
+  { id: 6, year: "2010", office: "House", state: "WI", last_name: "Kagen", party: "DEM", vote_per:"0.451232", vote_count:"118646"},
+
+  { id: 7, year: "2010", office: "Senate", state: "WI", last_name: "Johnson", party: "REP", vote_per:"0.518575", vote_count:"1125999"},
+
+  { id: 8, year: "2010", office: "Sentate", state: "WI", last_name: "Feingold", party: "DEM", vote_per:"0.470199", vote_count:"1020958"},
+
+  { id: 9, year: "2010", office: "House", state: "WY", last_name: "Lummis", party: "REP", vote_per:"0.704186", vote_count:"131661"},
+
+  { id: 10, year: "2010", office: "House", state: "WY", last_name: "Wendt", party: "DEM", vote_per:"0.244789", vote_count:"45768"},
+]
+
+export const twitterHeaders = [
+  { field: 'year', headerName: 'Year', width: 80 },
+  { field: 'created', headerName: 'Created', width: 130 },
+  { field: 'state', headerName: 'State', width: 80 },
+  { field: 'owner', headerName: 'Owner', width: 80 },
+  { field: 'abortion', headerName: 'Abortion', width: 80 },
+  { field: 'race', headerName: 'Race', width: 80 },
+  { field: 'immigration', headerName: 'Immigration', width: 130 },
+  { field: 'socio_eco', headerName: 'Socioeconomic', width: 150 },
+  { field: 'norm_neg', headerName: 'Normalized Negative', width: 130 },
+  { field: 'norm_pos', headerName: 'Normalized Positive', width: 130 },
+  { field: 'compound', headerName: 'Compound', width: 130 },
+  { field: 'tweet', headerName: 'Twitter', width: 130 },
+]
+
+export const twitterRows = [
+  { id: 1, year: "2020", created: "2020-08-04", state: "OR", owner: "-", abortion: "NULL", race:"racial", immigration: "NULL", socio_eco: "justice", norm_neg:"0", norm_pos: "1", compound: "0.8934", tweet:"-"},
+
+  { id: 2, year: "2016", created: "2016-01-15", state: "CA", owner: "-", abortion: "NULL", race:"NULL", immigration: "reform", socio_eco: "NULL", norm_neg:"1", norm_pos: "0", compound: "-0.7964", tweet:"-"},
+
+  { id: 3, year: "2018", created: "2018-12-22", state: "NJ", owner: "-", abortion: "NULL", race:"NULL", immigration: "border", socio_eco: "security", norm_neg:"0.2318181818181818", norm_pos: "0.7681818181818182", compound: "0.5609", tweet:""},
+  
+  { id: 4, year: "2019", created: "2019-06-17", state: "FL", owner: "-", abortion: "NULL", race:"racial", immigration: "NULL", socio_eco: "middle", norm_neg:"0", norm_pos: "1", compound: "-0.2732", tweet:""},
+
+  { id: 5, year: "2016", created: "2016-07-22", state: "TX", owner: "-", abortion: "NULL", race:"NULL", immigration: "border", socio_eco: "NULL", norm_neg:"1", norm_pos: "0", compound: "-0.3182", tweet:""},
+
+]

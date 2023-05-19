@@ -18,3 +18,8 @@
 .table-article {
   text-align: center;
 }
+
+.table-election {
+  text-align: center;
+  width: 65%
+}
