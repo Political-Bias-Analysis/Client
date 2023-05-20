@@ -2,15 +2,45 @@
     border: 1px solid #212529;
     margin: 0rem 1rem 1rem 1rem; 
     border-radius: 1rem;
+    font-weight: bold;
+    padding: 1rem;
 }
 .card-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .number-count {
     padding: 0;
     margin: 0rem 1rem 1rem 1rem;
+    font-size: 28px;
+}
+
+.title-card {
+    font-size: 16px;
+
+}
+
+.info {
+    font-size: 17px;
+}
+
+@media screen and (max-width: 1330px) {
+    .info-card-container {
+        padding: 0.6rem;
+    }
+    .number-count {
+        font-size: 20px;
+    }
+
+    .title-card {
+        font-size: 18px;
+    }
+
+    .info {
+        font-size: 15px;
+    }
 }

@@ -79,17 +79,16 @@ const USChoropleth = ({data}) => {
   }
   
   const mapStyle = {
-    height: '25vw',
-    width: '70vh',
+    height: '400px',
+    width: '680px'
   };
   
-
   return (
     <Paper className='map-container' elevation={8}>
-      <h3> Choropleth of Election Vote Percentage </h3>
+      <h3> Election Vote Percentage by State </h3>
       <div>
         <div>
-          <Card className='census-info-hover'>
+          <Card className='census-info'>
             Vote Percentage by State
             {!showInfo.name ? <p>Click on each state for more details</p>
             : (
@@ -97,7 +96,7 @@ const USChoropleth = ({data}) => {
                 <li className='census-info-text'>State: {showInfo.name}</li><br/>
                 {showInfo.DEM && <li className='census-info-text'>Democratic Party: {(showInfo.DEM * 100).toFixed(2)}%</li>}
                 {showInfo.REP && <li className='census-info-text'>Republican Party: {(showInfo.REP * 100).toFixed(2)}%</li>}
-                {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>}
+                {/* {showInfo.IND && <li className='census-info-text'>Independent Party: {(showInfo.IND * 100).toFixed(2)}%</li>} */}
               </ul>
             )}
           </Card>

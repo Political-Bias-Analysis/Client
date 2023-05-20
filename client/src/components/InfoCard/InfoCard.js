@@ -8,9 +8,9 @@ export const InfoCardCount = ({title, data}) => {
   return (
     <Paper className='info-card-container' elevation={8}>
       <Card className='card-container'>
-        <h3>{title}</h3>
-        <h4>Total Articles Scraped</h4>
-        <h1 className='number-count'>{data.count}</h1>
+        <p className='title-card'>{title}</p>
+        <p>Total Articles Scraped</p>
+        <p className='number-count'>{data.count}</p>
       </Card>
     </Paper>
   )
@@ -20,8 +20,8 @@ export const InfoCardSource = ({title, data}) => {
   return (
     <Paper className='info-card-container' elevation={8}>
     <Card className='card-container'>
-      <h3>{title}</h3>
-      {data.map(item => <h4>{item.source}: {item.count}</h4>)}
+      <p className='title-card'>{title}</p>
+      {data.map(item => <p className='info'>{item.source}: {item.count}</p>)}
     </Card>
   </Paper>
   )

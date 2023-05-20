@@ -21,3 +21,10 @@
     font-weight: bold;
     margin-bottom: 0px;
 }
+
+@media screen and (max-width: 1200px) {
+.legend {
+    margin-left: 1rem;
+    }
+    
+  }

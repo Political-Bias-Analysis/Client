@@ -149,17 +149,17 @@ const Dashboard = () => {
               </div>
               <div className='map-holder'>
                   <Grid container spacing={1}>
-                    <Grid item xs={5.5}>
+                    <Grid item md={12} lg={5.5}>
                       <USChoropleth data={dataStore.graphGeoData}/>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item md={3} lg={2}>
                       <ChoroplethLegendDem/>
                       <ChoroplethLegendRep/>
                     </Grid>
-                    <Grid item xs={4.5}>
+                    <Grid item md={9} lg={4.5}>
                       <BarGraphCount data={dataStore.articleCount}/>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item md={12} lg={12}>
                       <DotPlot data={dataStore.voteRegisData}/>
                     </Grid>
                   </Grid>
@@ -178,13 +178,13 @@ const Dashboard = () => {
               </div>
               <div className='map-holder'>
                 <Grid container spacing={1}>
-                  <Grid xs={4}>
+                  <Grid md={12} lg={4}>
                     <BarGraph data={dataStore.totalVote} title={selection.allYearsOffice}/>
                   </Grid>
-                  <Grid xs={5.5}>
+                  <Grid md={8} lg={5.5}>
                     <StackedArea data={dataStore.allArticleCount}/>
                   </Grid>
-                  <Grid xs={2.5}>
+                  <Grid md={4} lg={2.5}>
                     <InfoCardCount title="Articles Count Summary" data={dataStore.totalArticleCount}/>
                     <InfoCardSource title="Articles Count By Source" data={dataStore.articleCountBySource} />
                   </Grid>
