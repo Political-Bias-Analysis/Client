@@ -23,3 +23,26 @@
   text-align: center;
   width: 65%
 }
+
+.table-voters {
+  text-align: center;
+  width: 80%
+}
+
+.table {
+  border: 2px solid #000000;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+tr
+{
+  border: 5px solid #000000;
+}
+td
+{
+  background: #e5e5e5;
+  padding: 1rem;
+  border-radius: 5px;
+}
+

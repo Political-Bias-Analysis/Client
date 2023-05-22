@@ -5,7 +5,7 @@ import './Legend.css'
 export const ChoroplethLegendDem = () => {
   return (
     <Paper className='legend' style={{marginBottom:"1.5rem"}} elevation={8}>
-        <p> Democratic Party </p>
+        <p> Democratic </p>
         <div className='inner-box'>
             <button style={{backgroundColor:"#0088A3", padding:"4px", margin:"5px 5px 0px 5px"}}></button>
             <p className='text'>{'>'}60%</p>
@@ -37,7 +37,7 @@ export const ChoroplethLegendDem = () => {
 export const ChoroplethLegendRep = () => {
     return (
       <Paper className='legend' elevation={8}>
-          <p> Republican Party </p>
+          <p> Republican </p>
           <div className='inner-box'>
               <button style={{backgroundColor:'#9B2226', padding:"4px", margin:"5px 5px 0px 5px"}}></button>
               <p className='text'>{'>'}60%</p>
