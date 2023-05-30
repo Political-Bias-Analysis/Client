@@ -1,0 +1,43 @@
+.title-box {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.intro-title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.author-text {
+  text-align: center;
+}
+
+.images-holder {
+  display: flex;
+
+  margin-top: 1rem;
+}
+
+.icon-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.election-img {
+  max-width: 70%; 
+  height: auto;
+  border-radius: 1rem;
+  margin: 1rem;
+  align-self: center;
+}
+
+.icon-logo {
+  max-width: 50%; 
+  height: auto;
+  border-radius: 1rem;
+  margin: 1rem;
+}

@@ -10,7 +10,7 @@ const Navbar = () => {
           <a href="dashboard" className='a-link'>Dashboard</a>
         </li>
         <li>
-          <a className='a-link' href="models">Models</a>
+          <a className='a-link' href="presentation">Presentation</a>
         </li>
         <li>
           <a className='a-link' href="report">Reports</a>

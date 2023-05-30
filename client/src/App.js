@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Models from './pages/Models/Models';
+import Presentation from './pages/Presentation/Presentation';
 import FinalReport from './pages/FinalReport/FinalReport';
 
 import {
@@ -82,7 +82,7 @@ const App = () => {
     <Routes className="App">
       <Route path='/' element={<WelcomePage/>} />
       <Route path='/dashboard' element={<Dashboard/>} />
-      <Route path='/models' element={<Models/>} />
+      <Route path='/presentation' element={<Presentation/>} />
       <Route path='/report' element={<FinalReport/>} />
     </Routes>
   );
